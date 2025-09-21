@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Consultancy Services | SPEC COMPUTERS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/services.css">
+</head>
+<body>
+
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>SPEC<span> COMPUTERS</span></h1>
+            </div>
+            <nav class="navbar">
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#products">Products</a>
+                    <ul class="dropdown">
+                        <li><a href="laptops.html">Laptops</a></li>
+                        <li><a href="desktops.html">Desktops</a></li>
+                       <li><a href="accessories.html">Computer Accessories</a></li>
+                    </ul>                    
+                </li>
+                <li>
+                    <a href="#services">Services</a>
+                    <ul class="dropdown">
+                        <li><a href="webdevelopment.html">Web Development</a></li>
+                        <li><a href="aiconsultancy.html">AI Consultancy</a></li>
+                       <li><a href="cybersecurity.html">Cyber Security</a></li>
+                    </ul>
+                </li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#contact" class="btn">Free Consultation</a></li>
+              </ul>
+            </nav>
+
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="service-hero">
+        <div class="container">
+            <h1>AI Consultancy Services</h1>
+            <p>Transform your business with cutting-edge artificial intelligence solutions</p>
+        </div>
+    </section>
+
+    <!-- Service Tiers -->
+    <section class="service-tiers">
+        <div class="container">
+            <h2>Our AI Consultancy Packages</h2>
+            <p>Strategic AI solutions tailored to your business needs</p>
+            
+            <div class="tier-container">
+                <!-- AI Strategy -->
+                <div class="service-tier">
+                    <div class="tier-header">
+                        <h3>AI Strategy Workshop</h3>
+                        <div class="price">Ksh 75,000</div>
+                        <p>Kickstart your AI journey</p>
+                    </div>
+                    <div class="tier-body">
+                        <ul class="tier-features">
+                            <li><i class="fas fa-check"></i> 2-Day Intensive Workshop</li>
+                            <li><i class="fas fa-check"></i> Business Process Analysis</li>
+                            <li><i class="fas fa-check"></i> AI Opportunity Assessment</li>
+                            <li><i class="fas fa-check"></i> Implementation Roadmap</li>
+                            <li><i class="fas fa-check"></i> Executive Summary Report</li>
+                        </ul>
+                        <button class="btn inquire-btn" data-service="AI Strategy Workshop">Inquire Now</button>
+                    </div>
+                </div>
+                
+                <!-- AI Implementation -->
+                <div class="service-tier">
+                    <div class="tier-header" style="background: #3498db;">
+                        <h3>AI Implementation</h3>
+                        <div class="price">Ksh 125,000</div>
+                        <p>Deploy AI in your operations</p>
+                    </div>
+                    <div class="tier-body">
+                        <ul class="tier-features">
+                            <li><i class="fas fa-check"></i> Custom AI Solution Design</li>
+                            <li><i class="fas fa-check"></i> Data Pipeline Setup</li>
+                            <li><i class="fas fa-check"></i> Model Development & Training</li>
+                            <li><i class="fas fa-check"></i> Integration with Your Systems</li>
+                            <li><i class="fas fa-check"></i> 3 Months Maintenance</li>
+                        </ul>
+                        <button class="btn inquire-btn" data-service="AI Implementation">Inquire Now</button>
+                    </div>
+                </div>
+                
+                <!-- Full AI Transformation -->
+                <div class="service-tier">
+                    <div class="tier-header" style="background: #e74c3c;">
+                        <h3>Full AI Transformation</h3>
+                        <div class="price">Custom Pricing</div>
+                        <p>Complete business transformation</p>
+                    </div>
+                    <div class="tier-body">
+                        <ul class="tier-features">
+                            <li><i class="fas fa-check"></i> Enterprise-wide AI Strategy</li>
+                            <li><i class="fas fa-check"></i> Multiple AI Solutions Deployment</li>
+                            <li><i class="fas fa-check"></i> Staff Training & Upskilling</li>
+                            <li><i class="fas fa-check"></i> Continuous Improvement Program</li>
+                            <li><i class="fas fa-check"></i> Dedicated AI Team</li>
+                        </ul>
+                        <button class="btn inquire-btn" data-service="Full AI Transformation">Inquire Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Service Modal (same as web-development.html) -->
+    <div id="serviceModal" class="modal">
+      <div class="modal-content">
+       <span class="close-modal">&times;</span>
+       <h3>Service Inquiry</h3>
+       <form id="serviceInquiryForm">
+         <input type="hidden" id="serviceName" value="">
+         <div class="form-group">
+           <label for="customerName">Full Name</label>
+           <input type="text" id="customerName" placeholder="Your name" required>
+         </div>
+         <div class="form-group">
+           <label for="customerPhone">Phone Number</label>
+           <input type="tel" id="customerPhone" placeholder="Your phone number" required>
+         </div>
+         <div class="form-group">
+           <label for="customerLocation">Location</label>
+           <input type="text" id="customerLocation" placeholder="Your location" required>
+         </div>
+         <div class="form-group">
+           <label for="customerMessage">Additional Details</label>
+           <textarea id="customerMessage" placeholder="Tell us more about your needs"></textarea>
+         </div>
+           <button type="submit" class="btn">Submit Inquiry</button>
+       </form>
+       <div id="confirmationMessage" class="confirmation-message">
+         <i class="fas fa-check-circle"></i>
+         <p>Thank you! We'll contact you within 30 minutes about your <span id="confirmedService"></span> needs.</p>
+       </div>
+     </div>
+    </div>
+
+    <!-- Footer -->
+
+
+
+    <script src="js/script2.js"></script>
+</body>
+</html>

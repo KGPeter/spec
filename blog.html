@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - SPEC COMPUTERS</title>
+    <link rel="stylesheet" href="css/legal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            border-radius: 15px;
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: #999;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-body {
+            line-height: 1.8;
+        }
+
+        .modal-body p {
+            margin-bottom: 20px;
+            color: var(--gray-color);
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: #2a4ecc;
+        }
+
+        /* Blog post images in modal */
+        .blog-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="legal-header">
+            <h1>Digital Bytes</h1>
+            <p>Insights, news, and updates</p>
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </header>
+
+        <div class="legal-content">
+            <!-- Blog Post 1 -->
+            <div class="blog-post">
+                <h3>The Future of AI in Business</h3>
+                <div class="post-meta">
+                    <i class="fas fa-calendar"></i> September 15, 2025 | 
+                    <i class="fas fa-user"></i> By Peter KG
+                </div>
+                <p>Exploring how artificial intelligence is transforming business operations and creating new opportunities for growth and efficiency. AI is no longer just a buzzword...</p>
+                <span class="read-more" data-post="1">Read More →</span>
+            </div>
+
+            <!-- Blog Post 2 -->
+            <div class="blog-post">
+                <h3>Cybersecurity Best Practices for 2024</h3>
+                <div class="post-meta">
+                    <i class="fas fa-calendar"></i> September 15, 2025 | 
+                    <i class="fas fa-user"></i> By Peter KG
+                </div>
+                <p>Essential security measures every business should implement to protect against evolving cyber threats. In today's digital landscape, cybersecurity is not optional...</p>
+                <span class="read-more" data-post="2">Read More →</span>
+            </div>
+
+            <!-- Blog Post 3 -->
+            <div class="blog-post">
+                <h3>Web Development Trends to Watch</h3>
+                <div class="post-meta">
+                    <i class="fas fa-calendar"></i> September 15, 2025 | 
+                    <i class="fas fa-user"></i> By Peter KG
+                </div>
+                <p>The latest technologies and approaches that are shaping the future of web development. From serverless architecture to progressive web apps...</p>
+                <span class="read-more" data-post="3">Read More →</span>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="blog-modal" class="modal">
+            <div class="modal-content">
+                <button class="close-modal">&times;</button>
+                <div class="modal-header">
+                    <h2 id="modal-title"></h2>
+                    <div class="post-meta" id="modal-meta"></div>
+                </div>
+                <div class="modal-body" id="modal-content">
+                    <!-- Content will be inserted by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <footer class="legal-footer">
+            <p>© 2025 SPEC COMPUTERS. Last updated: <span id="last-updated"></span></p>
+        </footer>
+    </div>
+
+    <script>
+        // Blog post content data
+        const blogPosts = {
+            1: {
+                title: "The Future of AI in Business",
+                meta: '<i class="fas fa-calendar"></i> September 15, 2025 | <i class="fas fa-user"></i> By Peter KG',
+                content: `
+                    <img src="https://images.unsplash.com/photo-1677442135135-416f8aa26a5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="AI in Business" class="blog-image">
+                    
+                    <p>Artificial Intelligence is revolutionizing the way businesses operate, offering unprecedented opportunities for growth, efficiency, and innovation. In 2024, we're seeing AI move from experimental projects to core business operations.</p>
+                    
+                    <h3>Key Areas of Impact</h3>
+                    <p>1. <strong>Customer Service:</strong> AI-powered chatbots and virtual assistants are providing 24/7 support, reducing response times from hours to seconds.</p>
+                    <p>2. <strong>Data Analysis:</strong> Machine learning algorithms can process vast amounts of data to identify patterns and insights that humans might miss.</p>
+                    <p>3. <strong>Process Automation:</strong> Routine tasks are being automated, freeing up human workers for more strategic activities.</p>
+                    
+                    <h3>Real-World Examples</h3>
+                    <p>Companies like Amazon and Netflix have been using AI for years to personalize recommendations. Now, smaller businesses are adopting similar technologies to compete effectively.</p>
+                    
+                    <p>The future of AI in business is not about replacing humans, but about augmenting human capabilities and creating new opportunities for innovation and growth.</p>
+                `
+            },
+            2: {
+                title: "Cybersecurity Best Practices for 2024",
+                meta: '<i class="fas fa-calendar"></i> September 15, 2025 | <i class="fas fa-user"></i> By Peter KG',
+                content: `
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Cybersecurity" class="blog-image">
+                    
+                    <p>As cyber threats continue to evolve, businesses must stay ahead of the curve with robust security practices. Here are the essential measures for 2024:</p>
+                    
+                    <h3>Essential Security Measures</h3>
+                    <p>1. <strong>Multi-Factor Authentication (MFA):</strong> Implement MFA across all systems to add an extra layer of security beyond passwords.</p>
+                    <p>2. <strong>Regular Security Training:</strong> Educate employees about phishing attacks and social engineering tactics.</p>
+                    <p>3. <strong>Zero Trust Architecture:</strong> Assume no user or device is trustworthy until verified.</p>
+                    
+                    <h3>Emerging Threats</h3>
+                    <p>AI-powered attacks are becoming more sophisticated, making traditional security measures less effective. Businesses need to adopt AI-driven security solutions to combat these threats.</p>
+                    
+                    <p>Remember: Cybersecurity is not a one-time project but an ongoing process that requires constant vigilance and adaptation.</p>
+                `
+            },
+            3: {
+                title: "Web Development Trends to Watch",
+                meta: '<i class="fas fa-calendar"></i> September 5, 2025 | <i class="fas fa-user"></i> By Peter KG',
+                content: `
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Web Development" class="blog-image">
+                    
+                    <p>The web development landscape is constantly evolving. Here are the key trends shaping the industry in 2024:</p>
+                    
+                    <h3>Frontend Innovations</h3>
+                    <p>1. <strong>React Server Components:</strong> Blending server-side and client-side rendering for optimal performance.</p>
+                    <p>2. <strong>WebAssembly:</strong> Enabling high-performance applications to run in the browser.</p>
+                    <p>3. <strong>Progressive Web Apps (PWAs):</strong> Delivering app-like experiences through the browser.</p>
+                    
+                    <h3>Backend Advancements</h3>
+                    <p>1. <strong>Serverless Architecture:</strong> Reducing infrastructure management overhead.</p>
+                    <p>2. <strong>Edge Computing:</strong> Processing data closer to users for faster response times.</p>
+                    <p>3. <strong>GraphQL:</strong> Providing flexible and efficient data querying.</p>
+                    
+                    <p>These trends are making web applications faster, more secure, and more user-friendly than ever before.</p>
+                `
+            }
+        };
+
+        // Modal functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('blog-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalMeta = document.getElementById('modal-meta');
+            const modalContent = document.getElementById('modal-content');
+            const closeBtn = document.querySelector('.close-modal');
+
+            // Open modal on read more click
+            document.querySelectorAll('.read-more').forEach(link => {
+                link.addEventListener('click', function() {
+                    const postId = this.getAttribute('data-post');
+                    const post = blogPosts[postId];
+                    
+                    if (post) {
+                        modalTitle.innerHTML = post.title;
+                        modalMeta.innerHTML = post.meta;
+                        modalContent.innerHTML = post.content;
+                        modal.style.display = 'block';
+                        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                    }
+                });
+            });
+
+            // Close modal
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+
+            // Close with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            function closeModal() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+            }
+
+            // Last updated date
+            const lastUpdated = document.getElementById('last-updated');
+            if (lastUpdated) {
+                lastUpdated.textContent = new Date().toLocaleDateString();
+            }
+        });
+    </script>
+</body>
+</html>

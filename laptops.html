@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High-Performance Laptops | SPEC COMPUTERS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/products.css">
+</head>
+<body>
+
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>SPEC<span> COMPUTERS</span></h1>
+            </div>
+            <nav class="navbar">
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#products">Products</a>
+                    <ul class="dropdown">
+                        <li><a href="laptops.html">Laptops</a></li>
+                        <li><a href="desktops.html">Desktops</a></li>
+                       <li><a href="accessories.html">Computer Accessories</a></li>
+                    </ul>                    
+                </li>
+                <li>
+                    <a href="#services">Services</a>
+                    <ul class="dropdown">
+                        <li><a href="webdevelopment.html">Web Development</a></li>
+                        <li><a href="aiconsultancy.html">AI Consultancy</a></li>
+                       <li><a href="cybersecurity.html">Cyber Security</a></li>
+                    </ul>
+                </li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#contact" class="btn">Free Consultation</a></li>
+              </ul>
+            </nav>
+
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Laptops Hero Section -->
+    <section class="products-hero">
+        <div class="container">
+            <h1>High-Performance Laptops</h1>
+            <p>Premium laptops for professionals, creators, and gamers who demand power and portability</p>
+        </div>
+    </section>
+
+    <!-- Laptop Filter Section -->
+    <section class="product-filter">
+        <div class="filter-container">
+            <div class="filter-group">
+                <label for="brand">Brand</label>
+                <select id="brand">
+                    <option value="">All Brands</option>
+                    <option value="dell">Dell</option>
+                    <option value="hp">HP</option>
+                    <option value="lenovo">Lenovo</option>
+                    <option value="asus">ASUS</option>
+                    <option value="acer">Acer</option>
+                    <option value="apple">Apple</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="processor">Processor</label>
+                <select id="processor">
+                    <option value="">All Processors</option>
+                    <option value="i3">Intel Core i3</option>
+                    <option value="i5">Intel Core i5</option>
+                    <option value="i7">Intel Core i7</option>
+                    <option value="i9">Intel Core i9</option>
+                    <option value="ryzen5">AMD Ryzen 5</option>
+                    <option value="ryzen7">AMD Ryzen 7</option>
+                    <option value="ryzen9">AMD Ryzen 9</option>
+                    <option value="m1">Apple M1</option>
+                    <option value="m2">Apple M2</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="ram">RAM</label>
+                <select id="ram">
+                    <option value="">All RAM</option>
+                    <option value="8">8GB</option>
+                    <option value="16">16GB</option>
+                    <option value="32">32GB</option>
+                    <option value="64">64GB+</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="price-range">Price Range</label>
+                <select id="price-range">
+                    <option value="">All Prices</option>
+                    <option value="0-500">Under 15000</option>
+                    <option value="500-1000">15000 - 20000</option>
+                    <option value="1000-1500">20000 - 30000</option>
+                    <option value="1500-2000">30000 - 50000</option>
+                    <option value="2000">50000+</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="sort">Sort By</label>
+                <select id="sort">
+                    <option value="featured">Featured</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="newest">Newest Arrivals</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Laptops Grid Section -->
+    <section class="products-list">
+        <div class="container">
+            <div class="products-grid">
+                <!-- Laptop 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/delllatitude.jpg" alt="Laptop">
+                    </div>
+                    <div class="product-details">
+                        <h3>Dell Latitude 5300</h3>
+                        <ul class="product-specs">
+                            <li><i class="fas fa-microchip"></i> Intel Core i5-8665U (24MB Cache, up to 5.4GHz)</li>
+                            <li><i class="fas fa-memory"></i> 8GB DDR4 4800MHz RAM</li>
+                            <li><i class="fas fa-hdd"></i> 256GB PCIe NVMe SSD</li>
+                            <li><i class="fas fa-tv"></i> 13.3" 4K UHD+ (3840 x 2400) OLED Touch Display</li>
+                            <li><i class="fas fa-gamepad"></i> NVIDIA GeForce RTX 4070 (8GB GDDR6)</li>
+                            <li><i class="fas fa-battery-full"></i> 86WHr Battery, 130W USB-C Charger</li>
+                            <li><i class="fas fa-weight"></i> 4.2 lbs (1.9 kg)</li>
+                        </ul>
+                        <div class="product-price">ksh 25,500</div>
+                        <div class="product-actions">
+                            <a href="#" class="btn buy-now">Buy Now</a>
+                            <button class="compare-btn">Compare</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Laptop 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/hp840gs.jpg" alt="Laptop">
+                    </div>
+                    <div class="product-details">
+                        <h3>HP EliteBook 840 G6</h3>
+                        <ul class="product-specs">
+                            <li><i class="fas fa-microchip"></i> Intel Core i7-8665U (24MB Cache, up to 5.4GHz)</li>
+                            <li><i class="fas fa-memory"></i> 16GB Unified Memory</li>
+                            <li><i class="fas fa-hdd"></i> 512GB SSD Storage</li>
+                            <li><i class="fas fa-tv"></i> 16.2" Liquid Retina XDR (3456 x 2234)</li>
+                            <li><i class="fas fa-battery-full"></i> Up to 12 hours battery life</li>
+                            <li><i class="fas fa-weight"></i> 4.7 lbs (2.1 kg)</li>
+                            <li><i class="fas fa-camera"></i> 1080p FaceTime HD camera</li>
+                        </ul>
+                        <div class="product-price">ksh30,000</div>
+                        <div class="product-actions">
+                            <a href="#" class="btn buy-now">Buy Now</a>
+                            <button class="compare-btn">Compare</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Laptop 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/lenovoslim.png" alt="Laptop">
+                    </div>
+                    <div class="product-details">
+                        <h3>Lenovo IdeaPad Slim 3</h3>
+                        <ul class="product-specs">
+                            <li><i class="fas fa-microchip"></i> Core i5 13420H(16-core, up to 5.4GHz)</li>
+                            <li><i class="fas fa-memory"></i> 32GB DDR4 4800MHz RAM</li>
+                            <li><i class="fas fa-hdd"></i> 1TB PCIe 4.0 NVMe SSD</li>
+                            <li><i class="fas fa-tv"></i> 15.6" QHD (2560 x 1440) 240Hz IPS</li>
+                            <li><i class="fas fa-gamepad"></i> NVIDIA GeForce RTX 4080 (12GB GDDR6)</li>
+                            <li><i class="fas fa-keyboard"></i> Per-key RGB keyboard</li>
+                            <li><i class="fas fa-weight"></i> 4.19 lbs (1.9 kg)</li>
+                        </ul>
+                        <div class="product-price">ksh 60,000</div>
+                        <div class="product-actions">
+                            <a href="#" class="btn buy-now">Buy Now</a>
+                            <button class="compare-btn">Compare</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Laptop 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/hpenvy.jpg" alt="Laptop">
+                    </div>
+                    <div class="product-details">
+                        <h3>HP Envy 14 ES1013DX</h3>
+                        <ul class="product-specs">
+                            <li><i class="fas fa-microchip"></i> Intel Core i9-13900HX (24-core, up to 5.6GHz)</li>
+                            <li><i class="fas fa-memory"></i> 8GB DDR4 5600MHz RAM</li>
+                            <li><i class="fas fa-hdd"></i> 128GB PCIe 4.0 NVMe SSD</li>
+                            <li><i class="fas fa-tv"></i> 14" FHD Touch /li>
+                            <li><i class="fas fa-gamepad"></i> NVIDIA GeForce RTX 4090 (16GB GDDR6)</li>
+                            <li><i class="fas fa-keyboard"></i> RGB Backlit Keyboard</li>
+                            <li><i class="fas fa-weight"></i> 5.5 lbs (2.5 kg)</li>
+                        </ul>
+                        <div class="product-price">ksh 82,000</div>
+                        <div class="product-actions">
+                            <a href="#" class="btn buy-now">Buy Now</a>
+                            <button class="compare-btn">Compare</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Laptop 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/lenovo300.jpg" alt="Laptop">
+                    </div>
+                    <div class="product-details">
+                        <h3>Lenovo 81m9</h3>
+                        <ul class="product-specs">
+                            <li><i class="fas fa-microchip"></i> Intel Core i7-1360P (12-core, up to 5.0GHz)</li>
+                            <li><i class="fas fa-memory"></i> 4GB LPDDR4 RAM</li>
+                            <li><i class="fas fa-hdd"></i> 128GB PCIe NVMe SSD</li>
+                            <li><i class="fas fa-tv"></i> 14" 3K2K (3000 x 2000) OLED Touch</li>
+                            <li><i class="fas fa-battery-full"></i> Up to 16 hours battery life</li>
+                            <li><i class="fas fa-weight"></i> 3.09 lbs (1.4 kg)</li>
+                            <li><i class="fas fa-pen"></i> HP Tilt Pen included</li>
+                        </ul>
+                        <div class="product-price">ksh28,000</div>
+                        <div class="product-actions">
+                            <a href="#" class="btn buy-now">Buy Now</a>
+                            <button class="compare-btn">Compare</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Laptop 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/lenovot440.jpg" alt="Laptop">
+                    </div>
+                    <div class="product-details">
+                        <h3>Lenovo t440s</h3>
+                        <ul class="product-specs">
+                            <li><i class="fas fa-microchip"></i> AMD Ryzen 7 7840U (8-core, up to 5.1GHz)</li>
+                            <li><i class="fas fa-memory"></i> 8GB LPDDR4 RAM</li>
+                            <li><i class="fas fa-hdd"></i> 180GB PCIe NVMe SSD</li>
+                            <li><i class="fas fa-tv"></i> 14" WQXGA (2560 x 1600) IPS</li>
+                            <li><i class="fas fa-gamepad"></i> NVIDIA GeForce RTX 4050 (6GB GDDR6)</li>
+                            <li><i class="fas fa-battery-full"></i> Up to 12 hours battery life</li>
+                            <li><i class="fas fa-weight"></i> 3.06 lbs (1.39 kg)</li>
+                        </ul>
+                        <div class="product-price">ksh37,000</div>
+                        <div class="product-actions">
+                            <a href="#" class="btn buy-now">Buy Now</a>
+                            <button class="compare-btn">Compare</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="#">&laquo;</a>
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">&raquo;</a>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="js/script.js"></script>
+    <script src="js/script1.js"></script>
+
+<!-- Buy Now Popup Modal -->
+    <div id="buyNowModal" class="modal">
+        <div class="modal-content">
+          <span class="close-modal">&times;</span>
+          <h3>Check Product Availability</h3>
+          <form id="availabilityForm">
+            <div class="form-group">
+              <label for="customerName">Full Name</label>
+              <input type="text" id="customerName" required>
+            </div>
+            <div class="form-group">
+              <label for="customerPhone">Phone Number</label>
+              <input type="tel" id="customerPhone" required>
+            </div>
+            <div class="form-group">
+              <label for="customerLocation">Location</label>
+              <input type="text" id="customerLocation" required>
+            </div>
+            <button type="submit" class="btn">Is This Available?</button>
+          </form>
+          <div id="confirmationMessage" class="confirmation-message">
+            <i class="fas fa-check-circle"></i>
+            <p>Thank you! We'll reach out to you within 30 minutes.</p>
+          </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
