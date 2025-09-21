@@ -1,0 +1,201 @@
+/* ===== SERVICE PAGE STRUCTURE ===== */
+.service-hero {
+    background: linear-gradient(to right, rgba(15, 32, 39, 0.95), rgba(32, 58, 67, 0.95), rgba(44, 83, 100, 0.95)), 
+            url('hexagon-pattern.svg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.service-hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+}
+
+.service-hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 30px;
+}
+
+/* SERVICE TIERS */
+.service-tiers {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.tier-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-tier {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.service-tier:hover {
+    transform: translateY(-10px);
+}
+
+.tier-header {
+    padding: 25px;
+    background: #2c3e50;
+    color: white;
+}
+
+.tier-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.tier-header .price {
+    font-size: 1.8rem;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.tier-body {
+    padding: 25px;
+}
+
+.tier-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.tier-features li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+}
+
+.tier-features li:last-child {
+    border-bottom: none;
+}
+
+.tier-features i {
+    margin-right: 10px;
+    color: #3498db;
+}
+
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  overflow: auto;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  animation: modalopen 0.3s;
+}
+
+@keyframes modalopen {
+  from {opacity: 0; transform: translateY(-50px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-modal:hover {
+  color: #333;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.modal-content .form-group {
+  margin-bottom: 20px;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #555;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.modal-content textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.confirmation-message {
+  display: none;
+  text-align: center;
+  padding: 20px;
+}
+
+.confirmation-message i {
+  font-size: 50px;
+  color: #4CAF50;
+  margin-bottom: 15px;
+}
+
+.confirmation-message p {
+  font-size: 18px;
+  color: #333;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .modal-content {
+    margin: 20% auto;
+    width: 95%;
+    padding: 20px;
+  }
+}
