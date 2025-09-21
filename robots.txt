@@ -1,0 +1,9 @@
+# Allow all crawlers full access
+User-agent: *
+Disallow:
+
+# Block GitHub Pages default files (optional cleanup)
+Disallow: /404.html
+
+# Point crawlers to your sitemap (if it exists)
+Sitemap: https://kgpeter.github.io/spec/sitemap.xml
