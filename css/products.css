@@ -176,79 +176,164 @@
     background-color: #ddd;
 }
 /* Modal Styles */
+/* Modal Styles */
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5);
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
 }
 
 .modal-content {
-  background-color: #fff;
-  margin: 10% auto;
-  padding: 30px;
-  border-radius: 8px;
-  max-width: 500px;
-  position: relative;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .close-modal {
-  position: absolute;
-  top: 15px;
-  right: 25px;
-  font-size: 28px;
-  font-weight: bold;
-  color: #aaa;
-  cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s;
 }
 
 .close-modal:hover {
-  color: #333;
+    color: #333;
 }
 
 .modal-content h3 {
-  margin-bottom: 20px;
-  color: #2c3e50;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
 }
 
-.modal-content .form-group {
-  margin-bottom: 20px;
+/* Form Styles */
+#availabilityForm .form-group {
+    margin-bottom: 20px;
 }
 
-.modal-content label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 500;
+#availabilityForm label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
 }
 
-.modal-content input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
+#availabilityForm input,
+#availabilityForm textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+    font-family: inherit;
 }
 
-.confirmation-message {
-  display: none;
-  text-align: center;
-  padding: 20px;
+#availabilityForm textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+#availabilityForm input:focus,
+#availabilityForm textarea:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+#availabilityForm button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#availabilityForm button:hover {
+    transform: translateY(-2px);
+}
+
+#availabilityForm button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Confirmation Message */
+.confirmation-message,
+.error-message {
+    display: none;
+    text-align: center;
+    padding: 20px;
 }
 
 .confirmation-message i {
-  font-size: 50px;
-  color: #4CAF50;
-  margin-bottom: 15px;
+    font-size: 48px;
+    color: #28a745;
+    margin-bottom: 15px;
 }
 
-.confirmation-message p {
-  font-size: 18px;
-  color: #333;
+.error-message i {
+    font-size: 48px;
+    color: #dc3545;
+    margin-bottom: 15px;
+}
+
+.confirmation-message p,
+.error-message p {
+    font-size: 16px;
+    color: #333;
+    margin: 0 0 20px 0;
+    line-height: 1.5;
+}
+
+/* Buy Now Button */
+.buy-now-btn {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.2s;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.buy-now-btn:hover {
+    transform: translateY(-2px);
 }
 
 
@@ -278,5 +363,6 @@
         text-align: center;
     }
 }
+
 
 
