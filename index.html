@@ -256,15 +256,18 @@
             </div>
             <div class="contact-content">
                 <div class="contact-form">
-                    <form id="contactForm">
+                    <form id="contactForm" action="https://formsubmit.co/el/ruxasa" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
+                        <input type="hidden" name="_subject" value="New Contact Form Submission">
                         <div class="form-group">
-                            <input type="text" id="name" placeholder="Your Name" required>
+                            <input type="text" name="name" id="name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" placeholder="Email" required>
+                            <input type="email" name="email" id="email" placeholder="Email" required>
                         </div>
                         <div class="form-group">
-                            <select id="service" required>
+                            <select name="service" id="service" required>
                                 <option value="">Select Service</option>
                                 <option value="web-development">Web Development</option>
                                 <option value="ai-consultancy">AI Consultancy</option>
@@ -274,7 +277,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" placeholder="Message" required></textarea>
+                            <textarea name="message" id="message" placeholder="Message" required></textarea>
                         </div>
                         <button type="submit" class="btn">Send message</button>
                      </form>
@@ -283,7 +286,6 @@
             </div>
         </div>
     </section>
-
 
 
     <!-- Footer -->
@@ -338,6 +340,7 @@
 </body>
 
 </html>
+
 
 
 
