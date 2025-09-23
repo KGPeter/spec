@@ -1,130 +1,94 @@
-// ===== Buy Now Modal =====
-function initBuyNowModal() {
-    const modal = document.getElementById('buyNowModal');
-    const buyNowButtons = document.querySelectorAll('.buy-now-btn');
-    const closeModal = document.querySelector('.close-modal');
-    const form = document.getElementById('availabilityForm');
-    const successMessage = document.getElementById('availabilitySuccess');
-    const errorMessage = document.getElementById('availabilityError');
-
-    // Function to close modal
-    window.closeModal = function() {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-        resetModal();
-    };
-
-    // Function to reset modal to initial state
-    function resetModal() {
-        if (form) form.style.display = 'block';
-        if (successMessage) successMessage.style.display = 'none';
-        if (errorMessage) errorMessage.style.display = 'none';
-        if (form) form.reset();
-    }
-
-    // Open modal when Buy Now buttons are clicked
-    buyNowButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const productName = this.getAttribute('data-product') || 'the product';
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-            
-            // Set product name in hidden field
-            const productField = document.getElementById('productName');
-            if (productField) {
-                productField.value = productName;
-            }
-            
-            resetModal();
-        });
-    });
-
-    // Close modal when X is clicked
-    if (closeModal) {
-        closeModal.addEventListener('click', closeModal);
-    }
-
-    // Close modal when clicking outside
-    window.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            closeModal();
-        }
-    });
-
-    // Close modal with Escape key
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape' && modal.style.display === 'block') {
-            closeModal();
-        }
-    });
-
-    // Form submission
-    if (form) {
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const formData = {
-                name: document.getElementById('customerName').value.trim(),
-                phone: document.getElementById('customerPhone').value.trim(),
-                location: document.getElementById('customerLocation').value.trim(),
-                message: document.getElementById('customerMessage').value.trim(),
-                product: document.getElementById('productName').value
-            };
-
-            // Validation
-            if (!formData.name || !formData.phone || !formData.location) {
-                alert('Please fill in all required fields');
-                return;
-            }
-
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            
-            // Show loading state
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-
-            try {
-                // Create FormData for submission
-                const submissionData = new FormData(this);
-                
-                // Send to FormSubmit
-                const response = await fetch(this.action, {
-                    method: 'POST',
-                    body: submissionData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    // Show success message
-                    form.style.display = 'none';
-                    successMessage.style.display = 'block';
-                    
-                    // Auto-close after 5 seconds
-                    setTimeout(() => {
-                        closeModal();
-                    }, 5000);
-                    
-                } else {
-                    throw new Error('Form submission failed');
-                }
-                
-            } catch (error) {
-                console.error('Form submission error:', error);
-                // Show error message
-                form.style.display = 'none';
-                errorMessage.style.display = 'block';
-            } finally {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }
-        });
-    }
-}
-
-// Initialize the modal when DOM is loaded
+// Buy Now Modal Functionality
 document.addEventListener('DOMContentLoaded', function() {
-    initBuyNowModal();
+  // Get modal elements
+  const modal = document.getElementById('buyNowModal');
+  const btn = document.querySelectorAll('.btn.buy-now');
+  const closeBtn = document.querySelector('.close-modal');
+  const form = document.getElementById('availabilityForm');
+  const confirmation = document.getElementById('confirmationMessage');
+
+  // Open modal when any Buy Now button is clicked
+  btn.forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      modal.style.display = 'block';
+      // Reset form and hide confirmation when opening
+      form.style.display = 'block';
+      confirmation.style.display = 'none';
+      form.reset();
+    });
+  });
+
+  // Close modal when X is clicked
+  closeBtn.addEventListener('click', function() {
+    modal.style.display = 'none';
+  });
+
+  // Close modal when clicking outside
+  window.addEventListener('click', function(e) {
+    if (e.target == modal) {
+      modal.style.display = 'none';
+    }
+  });
+
+  // Form submission with FormSubmit
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    
+    // Show loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    try {
+      // Create FormData for submission to FormSubmit
+      const formData = new FormData(this);
+      
+      // Send to FormSubmit
+      const response = await fetch(this.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        // Success - show confirmation message
+        form.style.display = 'none';
+        confirmation.style.display = 'block';
+        confirmation.innerHTML = `
+          <i class="fas fa-check-circle"></i>
+          <p>Thank you! We've received your inquiry and will contact you within 30 minutes.</p>
+        `;
+        
+        // Close modal after 3 seconds
+        setTimeout(function() {
+          modal.style.display = 'none';
+        }, 3000);
+        
+      } else {
+        // Error from FormSubmit
+        throw new Error('Form submission failed');
+      }
+      
+    } catch (error) {
+      // Show error message
+      form.style.display = 'none';
+      confirmation.style.display = 'block';
+      confirmation.innerHTML = `
+        <i class="fas fa-times-circle"></i>
+        <p>Sorry, there was an error sending your message. Please try again or contact us directly.</p>
+      `;
+      
+      // Keep error message visible until user closes manually
+      console.error('Form submission error:', error);
+    } finally {
+      // Reset button state
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  });
 });
