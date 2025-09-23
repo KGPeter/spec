@@ -176,28 +176,25 @@
     background-color: #ddd;
 }
 /* Modal Styles */
-/* ======================= Modal Styles ======================= */
+/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
-    z-index: 10001; /* above all other elements */
+    z-index: 10001; /* slightly higher to appear above other elements */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
 }
 
 .modal-content {
     background-color: #fff;
+    margin: 5% auto;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
     width: 90%;
     max-width: 500px;
     position: relative;
@@ -236,7 +233,7 @@
     text-align: center;
 }
 
-/* ======================= Form Styles ======================= */
+/* Form Styles */
 #availabilityForm .form-group {
     margin-bottom: 20px;
 }
@@ -293,28 +290,32 @@
     transform: none;
 }
 
-/* ======================= Confirmation / Error Message ======================= */
+/* Confirmation Message */
 .confirmation-message,
 .error-message {
     display: none;
     text-align: center;
     padding: 20px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    font-size: 16px;
-    line-height: 1.5;
 }
 
-.confirmation-message {
-    background-color: #e6f4ea;
+.confirmation-message i {
+    font-size: 48px;
     color: #28a745;
-    border-left: 5px solid #28a745;
+    margin-bottom: 15px;
 }
 
-.error-message {
-    background-color: #fdecea;
+.error-message i {
+    font-size: 48px;
     color: #dc3545;
-    border-left: 5px solid #dc3545;
+    margin-bottom: 15px;
+}
+
+.confirmation-message p,
+.error-message p {
+    font-size: 16px;
+    color: #333;
+    margin: 0 0 20px 0;
+    line-height: 1.5;
 }
 
 
@@ -377,6 +378,7 @@
         text-align: center;
     }
 }
+
 
 
 
