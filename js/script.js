@@ -120,7 +120,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
 
             const formData = {
                 name: this.elements['name'].value.trim(),
@@ -193,3 +192,4 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
