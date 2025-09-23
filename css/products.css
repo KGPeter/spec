@@ -291,6 +291,7 @@
 }
 
 /* Confirmation Message */
+
 .confirmation-message,
 .error-message {
     display: none;
@@ -303,13 +304,7 @@
     color: #28a745;
     margin-bottom: 15px;
 }
-.confirmation-message i.fa-check-circle {
-    color: #28a745;
-}
 
-.confirmation-message i.fa-times-circle {
-    color: #dc3545;
-}
 .error-message i {
     font-size: 48px;
     color: #dc3545;
@@ -323,6 +318,7 @@
     margin: 0 0 20px 0;
     line-height: 1.5;
 }
+
 
 /* Buy Now Button */
 .buy-now-btn {
@@ -342,6 +338,19 @@
     transform: translateY(-2px);
 }
 
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .confirmation-message i,
+    .error-message i {
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+    
+    .confirmation-message p,
+    .error-message p {
+        font-size: 14px;
+    }
+}
 
 /* RESPONSIVE ADJUSTMENTS */
 @media (max-width: 768px) {
@@ -369,6 +378,7 @@
         text-align: center;
     }
 }
+
 
 
 
