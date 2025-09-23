@@ -118,25 +118,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ===== Contact Form =====
     const contactForm = document.getElementById('contactForm');
+    const successMsg = document.getElementById('contactSuccess');
+    
     if (contactForm) {
         contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
 
-            const formData = {
-                name: this.elements['name'].value.trim(),
-                email: this.elements['email'].value.trim(),
-                service: this.elements['service'].value,
-                message: this.elements['message'].value.trim()
-            };
-
-            if (!formData.name || !formData.email || !formData.message) {
-                alert('Please fill in all required fields');
-                return;
+            const formData = new FormData(this);
+            if (!formData.get('name') || !formData.get('email') || !formData.get('message')) {
+            alert('Please fill in all required fields');
+            return;
             }
+
 
             const submitBtn = this.querySelector('button[type="submit"]');
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
-
+            
+            fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+            if (response.ok) {
+                successMsg.style.display = 'block';
+                this.reset();
+              } else {
+                alert('Oops! There was a problem submitting your form.');
+              }
+            })
+            .catch(error => {
+               console.error(error);
+               alert('Oops! There was a problem submitting your form.');
+            })
+            .finally(() => {
+               submitBtn.disabled = false;
+               submitBtn.textContent = 'Send message';
         });
     }
 
@@ -183,5 +201,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
 
 
