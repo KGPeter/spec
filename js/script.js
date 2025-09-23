@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ===== Contact Form =====
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
+        contactForm.addEventListener('submit', async function (e) {
             e.preventDefault();
 
             const formData = {
@@ -129,25 +129,129 @@ document.addEventListener('DOMContentLoaded', function () {
                 message: this.elements['message'].value.trim()
             };
 
-            if (!formData.name || !formData.email || !formData.message) {
-                alert('Please fill in all required fields');
+            // Validation
+            if (!formData.name || !formData.email || !formData.message || !formData.service) {
+                showCustomPopup('Please fill in all required fields', 'error');
                 return;
             }
 
-            console.log('Form submitted:', formData);
-
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
+            
+            // Show loading state
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
 
-            setTimeout(() => {
-                alert('Thank you for your message! We will get back to you soon.');
-                this.reset();
+            try {
+                // Create FormData object for actual submission
+                const submissionData = new FormData(this);
+                
+                // Send to FormSubmit
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: submissionData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Success popup
+                    showCustomPopup('Your message has been sent successfully! We will get back to you soon.', 'success');
+                    this.reset();
+                } else {
+                    // Error from FormSubmit
+                    throw new Error('Form submission failed');
+                }
+                
+            } catch (error) {
+                // Network error or other issues
+                console.error('Form submission error:', error);
+                showCustomPopup('There was an error sending your message. Please try again.', 'error');
+            } finally {
+                // Reset button state
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-            }, 1500);
+            }
         });
+    }
+
+    // ===== Custom Popup Function =====
+    function showCustomPopup(message, type) {
+        // Create overlay
+        const overlay = document.createElement('div');
+        overlay.className = 'popup-overlay';
+        overlay.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        `;
+        
+        // Create popup
+        const popup = document.createElement('div');
+        popup.className = `custom-popup popup-${type}`;
+        popup.style.cssText = `
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            min-width: 300px;
+            max-width: 90%;
+            border-left: 5px solid ${type === 'success' ? '#4CAF50' : '#f44336'};
+        `;
+        
+        const icon = type === 'success' ? '✅' : '❌';
+        const title = type === 'success' ? 'Success!' : 'Error!';
+        
+        popup.innerHTML = `
+            <h3 style="margin: 0 0 15px 0; color: ${type === 'success' ? '#4CAF50' : '#f44336'};">${icon} ${title}</h3>
+            <p style="margin: 0 0 20px 0; line-height: 1.5;">${message}</p>
+            <div class="popup-buttons">
+                <button class="popup-ok" style="
+                    background: ${type === 'success' ? '#4CAF50' : '#f44336'};
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 16px;
+                ">OK</button>
+            </div>
+        `;
+        
+        // Add to DOM
+        overlay.appendChild(popup);
+        document.body.appendChild(overlay);
+        
+        // Add event listener to OK button
+        const okButton = popup.querySelector('.popup-ok');
+        okButton.addEventListener('click', function() {
+            document.body.removeChild(overlay);
+        });
+        
+        // Close on overlay click
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) {
+                document.body.removeChild(overlay);
+            }
+        });
+        
+        // Close on Escape key
+        const closePopup = function(e) {
+            if (e.key === 'Escape') {
+                document.body.removeChild(overlay);
+                document.removeEventListener('keydown', closePopup);
+            }
+        };
+        document.addEventListener('keydown', closePopup);
     }
 
     // ===== Smooth Scrolling =====
