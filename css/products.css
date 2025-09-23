@@ -303,7 +303,13 @@
     color: #28a745;
     margin-bottom: 15px;
 }
+.confirmation-message i.fa-check-circle {
+    color: #28a745;
+}
 
+.confirmation-message i.fa-times-circle {
+    color: #dc3545;
+}
 .error-message i {
     font-size: 48px;
     color: #dc3545;
@@ -363,6 +369,7 @@
         text-align: center;
     }
 }
+
 
 
 
