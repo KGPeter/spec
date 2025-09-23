@@ -628,6 +628,15 @@
             searchFilter.addEventListener('input', filterProducts);
         });
     </script>
+    <script src="js/script.js"></script>
+      <script>
+         document.addEventListener("keydown", function(e) {
+           if (e.ctrlKey && (e.key === "u" || e.key === "U")) {
+             e.preventDefault();
+             alert("You are not allowed to copy content or view source!");
+           }
+         });
+    </script>
 
     <!-- Buy Now Popup Modal -->
     <div id="buyNowModal" class="modal">
@@ -659,6 +668,7 @@
 </body>
 
 </html>
+
 
 
 
