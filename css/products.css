@@ -180,7 +180,7 @@
 .modal {
     display: none;
     position: fixed;
-    z-index: 10000;
+    z-index: 9999;
     left: 0;
     top: 0;
     width: 100%;
@@ -378,6 +378,7 @@
         text-align: center;
     }
 }
+
 
 
 
