@@ -176,147 +176,81 @@
     background-color: #ddd;
 }
 /* Modal Styles */
-/* ======================= Modal Styles ======================= */
+/* Modal Styles */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 10001; /* above all other elements */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
 }
 
 .modal-content {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 30px rgba(0,0,0,0.3);
-    width: 90%;
-    max-width: 500px;
-    position: relative;
-    animation: modalSlideIn 0.3s ease-out;
-}
-
-@keyframes modalSlideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .close-modal {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 28px;
-    font-weight: bold;
-    color: #aaa;
-    cursor: pointer;
-    transition: color 0.3s;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
 }
 
 .close-modal:hover {
-    color: #333;
+  color: #333;
 }
 
 .modal-content h3 {
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center;
+  margin-bottom: 20px;
+  color: #2c3e50;
 }
 
-/* ======================= Form Styles ======================= */
-#availabilityForm .form-group {
-    margin-bottom: 20px;
+.modal-content .form-group {
+  margin-bottom: 20px;
 }
 
-#availabilityForm label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 600;
-    color: #333;
+.modal-content label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
 }
 
-#availabilityForm input,
-#availabilityForm textarea {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #e0e0e0;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: border-color 0.3s;
-    box-sizing: border-box;
-    font-family: inherit;
-}
-
-#availabilityForm textarea {
-    height: 80px;
-    resize: vertical;
-}
-
-#availabilityForm input:focus,
-#availabilityForm textarea:focus {
-    outline: none;
-    border-color: #007bff;
-}
-
-#availabilityForm button {
-    width: 100%;
-    padding: 12px;
-    background: linear-gradient(135deg, #007bff, #0056b3);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-#availabilityForm button:hover {
-    transform: translateY(-2px);
-}
-
-#availabilityForm button:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-    transform: none;
-}
-
-/* ======================= Confirmation / Error Message ======================= */
-.confirmation-message,
-.error-message {
-    display: none;
-    text-align: center;
-    padding: 20px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    font-size: 16px;
-    line-height: 1.5;
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
 }
 
 .confirmation-message {
-    background-color: #e6f4ea;
-    color: #28a745;
-    border-left: 5px solid #28a745;
+  display: none;
+  text-align: center;
+  padding: 20px;
 }
 
-.error-message {
-    background-color: #fdecea;
-    color: #dc3545;
-    border-left: 5px solid #dc3545;
+.confirmation-message i {
+  font-size: 50px;
+  color: #4CAF50;
+  margin-bottom: 15px;
 }
 
+.confirmation-message p {
+  font-size: 18px;
+  color: #333;
+}
 
 
 /* Buy Now Button */
@@ -377,6 +311,7 @@
         text-align: center;
     }
 }
+
 
 
 
