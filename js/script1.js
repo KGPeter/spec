@@ -1,10 +1,10 @@
 // Buy Now Modal Functionality
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('Modal script loaded'); // Debug line
+  console.log('Modal script loaded');
   
   // Get modal elements
   const modal = document.getElementById('buyNowModal');
-  const btn = document.querySelectorAll('.buy-now-btn'); // Changed from '.btn.buy-now'
+  const btn = document.querySelectorAll('.buy-now-btn');
   const closeBtn = document.querySelector('.close-modal');
   const form = document.getElementById('availabilityForm');
   const confirmation = document.getElementById('confirmationMessage');
@@ -15,13 +15,14 @@ document.addEventListener('DOMContentLoaded', function() {
   btn.forEach(button => {
     button.addEventListener('click', function(e) {
       e.preventDefault();
-      console.log('Buy Now button clicked'); // Debug
+      console.log('Buy Now button clicked');
       modal.style.display = 'block';
       
       // Set product name if available
       const productName = this.getAttribute('data-product');
       if (productName) {
         document.getElementById('productName').value = productName;
+        console.log('Product set to:', productName);
       }
     });
   });
@@ -45,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Form submission with FormSubmit
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
-    console.log('Form submitted'); // Debug
+    console.log('Form submitted');
     
     const submitBtn = this.querySelector('button[type="submit"]');
     const originalText = submitBtn.textContent;
@@ -55,8 +56,9 @@ document.addEventListener('DOMContentLoaded', function() {
     submitBtn.textContent = 'Sending...';
 
     try {
-      // Create FormData for submission to FormSubmit
+      // Log form data for debugging
       const formData = new FormData(this);
+      console.log('Form data:', Object.fromEntries(formData));
       
       // Send to FormSubmit
       const response = await fetch(this.action, {
@@ -67,7 +69,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
 
+      console.log('Response status:', response.status);
+      
       if (response.ok) {
+        const result = await response.json();
+        console.log('FormSubmit response:', result);
+        
         // Success - show confirmation message
         form.style.display = 'none';
         confirmation.innerHTML = `
@@ -83,7 +90,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000);
         
       } else {
-        throw new Error('Form submission failed');
+        const errorText = await response.text();
+        console.error('FormSubmit error response:', errorText);
+        throw new Error(`Form submission failed: ${response.status}`);
       }
       
     } catch (error) {
@@ -93,11 +102,9 @@ document.addEventListener('DOMContentLoaded', function() {
       confirmation.innerHTML = `
         <i class="fas fa-times-circle"></i>
         <p>Sorry, there was an error. Please try again or contact us directly.</p>
+        <button onclick="resetForm()" class="btn">Try Again</button>
       `;
       confirmation.style.display = 'block';
-    } finally {
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
     }
   });
 
