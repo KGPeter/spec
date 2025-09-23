@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Get modal elements
   const modal = document.getElementById('buyNowModal');
-  const btn = document.querySelectorAll('.buy-now-btn');
+  const btn = document.querySelectorAll('.buy-now'); // Fixed class name
   const closeBtn = document.querySelector('.close-modal');
   const form = document.getElementById('availabilityForm');
   const confirmation = document.getElementById('confirmationMessage');
@@ -16,14 +16,15 @@ document.addEventListener('DOMContentLoaded', function() {
     button.addEventListener('click', function(e) {
       e.preventDefault();
       console.log('Buy Now button clicked');
-      modal.style.display = 'block';
       
-      // Set product name if available
-      const productName = this.getAttribute('data-product');
+      // Set product name from the product card
+      const productName = this.closest('.product-card').querySelector('h3').textContent;
       if (productName) {
         document.getElementById('productName').value = productName;
         console.log('Product set to:', productName);
       }
+      
+      modal.style.display = 'block';
     });
   });
 
@@ -56,30 +57,21 @@ document.addEventListener('DOMContentLoaded', function() {
     submitBtn.textContent = 'Sending...';
 
     try {
-      // Log form data for debugging
-      const formData = new FormData(this);
-      console.log('Form data:', Object.fromEntries(formData));
-      
       // Send to FormSubmit
       const response = await fetch(this.action, {
         method: 'POST',
-        body: formData,
+        body: new FormData(this),
         headers: {
           'Accept': 'application/json'
         }
       });
 
-      console.log('Response status:', response.status);
-      
       if (response.ok) {
-        const result = await response.json();
-        console.log('FormSubmit response:', result);
-        
         // Success - show confirmation message
         form.style.display = 'none';
         confirmation.innerHTML = `
-          <i class="fas fa-check-circle"></i>
-          <p>Thank you! We've received your inquiry and will contact you within 30 minutes.</p>
+          <i class="fas fa-check-circle" style="font-size: 48px; color: green; margin-bottom: 20px;"></i>
+          <p style="font-size: 18px; text-align: center;">Thank you! We've received your inquiry and will contact you within 30 minutes.</p>
         `;
         confirmation.style.display = 'block';
         
@@ -90,8 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000);
         
       } else {
-        const errorText = await response.text();
-        console.error('FormSubmit error response:', errorText);
         throw new Error(`Form submission failed: ${response.status}`);
       }
       
@@ -100,9 +90,9 @@ document.addEventListener('DOMContentLoaded', function() {
       // Show error message
       form.style.display = 'none';
       confirmation.innerHTML = `
-        <i class="fas fa-times-circle"></i>
-        <p>Sorry, there was an error. Please try again or contact us directly.</p>
-        <button onclick="resetForm()" class="btn">Try Again</button>
+        <i class="fas fa-times-circle" style="font-size: 48px; color: red; margin-bottom: 20px;"></i>
+        <p style="font-size: 18px; text-align: center;">Sorry, there was an error. Please try again or contact us directly.</p>
+        <button onclick="resetForm()" class="btn" style="margin-top: 20px;">Try Again</button>
       `;
       confirmation.style.display = 'block';
     }
@@ -110,8 +100,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Function to reset form
   function resetForm() {
+    form.reset();
     form.style.display = 'block';
     confirmation.style.display = 'none';
-    form.reset();
+    const submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Check Availability';
   }
 });
