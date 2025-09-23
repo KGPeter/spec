@@ -5,10 +5,172 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Stay informed with the SPEC COMPUTERS blog, featuring insights on technology trends, IT solutions, and tips to optimize your digital experience.">
     <title>Blog - SPEC COMPUTERS</title>
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="stylesheet" href="css/legal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #2a4ecc;
+            --secondary-color: #1a1a2e;
+            --accent-color: #0f3460;
+            --light-color: #f5f5f5;
+            --gray-color: #6c757d;
+            --dark-color: #212529;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header with background image */
+        .blog-header {
+            position: relative;
+            padding: 100px 20px;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .header-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(42, 78, 204, 0.7), rgba(26, 26, 46, 0.8)), 
+                        url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+            z-index: -1;
+        }
+
+        .blog-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .blog-header p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .back-button:hover {
+            background: #1a3bb3;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Blog posts */
+        .blog-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .blog-post {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .post-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .post-content {
+            padding: 25px;
+        }
+
+        .blog-post h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+
+        .post-meta i {
+            margin-right: 5px;
+        }
+
+        .post-meta span {
+            margin-right: 15px;
+        }
+
+        .blog-post p {
+            margin-bottom: 20px;
+            color: var(--gray-color);
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .read-more:hover {
+            color: #1a3bb3;
+        }
+
+        .read-more i {
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+
         /* Modal Styles */
         .modal {
             display: none;
@@ -43,11 +205,11 @@
             top: 15px;
             right: 20px;
             font-size: 2rem;
-            color: #999;
+            color: var(--gray-color);
             cursor: pointer;
             background: none;
             border: none;
-            transition: color 0.3s ease;
+            transition: var(--transition);
         }
 
         .close-modal:hover {
@@ -68,19 +230,6 @@
             color: var(--gray-color);
         }
 
-        .read-more {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .read-more:hover {
-            color: #2a4ecc;
-        }
-
-        /* Blog post images in modal */
         .blog-image {
             width: 100%;
             height: 300px;
@@ -89,118 +238,88 @@
             margin: 20px 0;
         }
 
-        /* Header with background image */
-        .legal-header {
-            position: relative;
-            padding: 60px 20px;
+        /* Footer */
+        .blog-footer {
             text-align: center;
-            color: white;
-            overflow: hidden;
-        }
-
-        .header-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('images/blogpic.webp');
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-        }
-
-        .header-background::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-        }
-
-        .legal-header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        }
-
-        .legal-header p {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-        }
-
-        .back-button {
-            display: inline-block;
-            padding: 12px 25px;
-            background: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
-
-        .back-button:hover {
-            background: #2a4ecc;
+            padding: 30px 0;
+            border-top: 1px solid #eaeaea;
+            color: var(--gray-color);
+            font-size: 0.9rem;
         }
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
-            .legal-header h1 {
+            .blog-header h1 {
                 font-size: 2.5rem;
             }
             
-            .legal-header p {
+            .blog-header p {
                 font-size: 1.2rem;
+            }
+            
+            .blog-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                padding: 25px;
+                margin: 20px auto;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header class="legal-header">
+        <header class="blog-header">
             <div class="header-background"></div>
             <h1>Digital Bytes</h1>
-            <p>Insights, news, and updates</p>
+            <p>Insights, news, and updates from the world of technology</p>
             <a href="index.html" class="back-button">
                 <i class="fas fa-arrow-left"></i> Back to Home
             </a>
         </header>
 
-        <div class="legal-content">
-            <!-- Blog Post 1 -->
+        <div class="blog-content">
+            <!-- Blog Post 1 - NEWEST POST -->
             <div class="blog-post">
-                <h3>The Future of AI in Business</h3>
-                <div class="post-meta">
-                    <i class="fas fa-calendar"></i> September 15, 2025 | 
-                    <i class="fas fa-user"></i> By Peter KG
+                <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=1000&q=80" alt="AI in Business" class="post-image">
+                <div class="post-content">
+                    <h3>Web Development Trends to Watch</h3>
+                    <div class="post-meta">
+                        <span><i class="fas fa-calendar"></i> September 25, 2025</span>
+                        <span><i class="fas fa-user"></i> By Peter KG</span>
+                    </div>
+                    <p>The latest technologies and approaches that are shaping the future of web development. From serverless architecture to progressive web apps...</p>
+                    <span class="read-more" data-post="1">Read More <i class="fas fa-arrow-right"></i></span>
                 </div>
-                <p>Exploring how artificial intelligence is transforming business operations and creating new opportunities for growth and efficiency. AI is no longer just a buzzword...</p>
-                <span class="read-more" data-post="1">Read More →</span>
             </div>
 
             <!-- Blog Post 2 -->
             <div class="blog-post">
-                <h3>Cybersecurity Best Practices for 2024</h3>
-                <div class="post-meta">
-                    <i class="fas fa-calendar"></i> September 15, 2025 | 
-                    <i class="fas fa-user"></i> By Peter KG
+                <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Cybersecurity" class="post-image">
+                <div class="post-content">
+                    <h3>Cybersecurity Best Practices for 2024</h3>
+                    <div class="post-meta">
+                        <span><i class="fas fa-calendar"></i> September 15, 2025</span>
+                        <span><i class="fas fa-user"></i> By Peter KG</span>
+                    </div>
+                    <p>Essential security measures every business should implement to protect against evolving cyber threats. In today's digital landscape, cybersecurity is not optional...</p>
+                    <span class="read-more" data-post="2">Read More <i class="fas fa-arrow-right"></i></span>
                 </div>
-                <p>Essential security measures every business should implement to protect against evolving cyber threats. In today's digital landscape, cybersecurity is not optional...</p>
-                <span class="read-more" data-post="2">Read More →</span>
             </div>
 
-            <!-- Blog Post 3 -->
+            <!-- Blog Post 3 - OLDEST POST -->
             <div class="blog-post">
-                <h3>Web Development Trends to Watch</h3>
-                <div class="post-meta">
-                    <i class="fas fa-calendar"></i> September 15, 2025 | 
-                    <i class="fas fa-user"></i> By Peter KG
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Web Development" class="post-image">
+                <div class="post-content">
+                    <h3>The Future of AI in Business</h3>
+                    <div class="post-meta">
+                        <span><i class="fas fa-calendar"></i> September 5, 2025</span>
+                        <span><i class="fas fa-user"></i> By Peter KG</span>
+                    </div>
+                    <p>Exploring how artificial intelligence is transforming business operations and creating new opportunities for growth and efficiency. AI is no longer just a buzzword...</p>
+                    <span class="read-more" data-post="3">Read More <i class="fas fa-arrow-right"></i></span>
                 </div>
-                <p>The latest technologies and approaches that are shaping the future of web development. From serverless architecture to progressive web apps...</p>
-                <span class="read-more" data-post="3">Read More →</span>
             </div>
         </div>
 
@@ -218,36 +337,38 @@
             </div>
         </div>
 
-        <footer class="legal-footer">
+        <footer class="blog-footer">
             <p>© 2025 SPEC COMPUTERS. Last updated: <span id="last-updated"></span></p>
         </footer>
     </div>
 
     <script>
-        // Blog post content data
+        // Blog post content data - Ordered with newest first
         const blogPosts = {
             1: {
-                title: "The Future of AI in Business",
-                meta: '<i class="fas fa-calendar"></i> September 15, 2025 | <i class="fas fa-user"></i> By Peter KG',
+                title: "Web Development Trends to Watch",
+                meta: '<span><i class="fas fa-calendar"></i> September 25, 2025</span><span><i class="fas fa-user"></i> By Peter KG</span>',
                 content: `
-                    <img src="https://images.unsplash.com/photo-1677442135135-416f8aa26a5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="AI in Business" class="blog-image">
+                    <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d" alt="Web Development" class="blog-image">
                     
-                    <p>Artificial Intelligence is revolutionizing the way businesses operate, offering unprecedented opportunities for growth, efficiency, and innovation. In 2024, we're seeing AI move from experimental projects to core business operations.</p>
+                    <p>The web development landscape is constantly evolving. Here are the key trends shaping the industry in 2025:</p>
                     
-                    <h3>Key Areas of Impact</h3>
-                    <p>1. <strong>Customer Service:</strong> AI-powered chatbots and virtual assistants are providing 24/7 support, reducing response times from hours to seconds.</p>
-                    <p>2. <strong>Data Analysis:</strong> Machine learning algorithms can process vast amounts of data to identify patterns and insights that humans might miss.</p>
-                    <p>3. <strong>Process Automation:</strong> Routine tasks are being automated, freeing up human workers for more strategic activities.</p>
+                    <h3>Frontend Innovations</h3>
+                    <p>1. <strong>React Server Components:</strong> Blending server-side and client-side rendering for optimal performance.</p>
+                    <p>2. <strong>WebAssembly:</strong> Enabling high-performance applications to run in the browser.</p>
+                    <p>3. <strong>Progressive Web Apps (PWAs):</strong> Delivering app-like experiences through the browser.</p>
                     
-                    <h3>Real-World Examples</h3>
-                    <p>Companies like Amazon and Netflix have been using AI for years to personalize recommendations. Now, smaller businesses are adopting similar technologies to compete effectively.</p>
+                    <h3>Backend Advancements</h3>
+                    <p>1. <strong>Serverless Architecture:</strong> Reducing infrastructure management overhead.</p>
+                    <p>2. <strong>Edge Computing:</strong> Processing data closer to users for faster response times.</p>
+                    <p>3. <strong>GraphQL:</strong> Providing flexible and efficient data querying.</p>
                     
-                    <p>The future of AI in business is not about replacing humans, but about augmenting human capabilities and creating new opportunities for innovation and growth.</p>
+                    <p>These trends are making web applications faster, more secure, and more user-friendly than ever before.</p>
                 `
             },
             2: {
                 title: "Cybersecurity Best Practices for 2024",
-                meta: '<i class="fas fa-calendar"></i> September 15, 2025 | <i class="fas fa-user"></i> By Peter KG',
+                meta: '<span><i class="fas fa-calendar"></i> September 15, 2025</span><span><i class="fas fa-user"></i> By Peter KG</span>',
                 content: `
                     <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Cybersecurity" class="blog-image">
                     
@@ -265,24 +386,22 @@
                 `
             },
             3: {
-                title: "Web Development Trends to Watch",
-                meta: '<i class="fas fa-calendar"></i> September 5, 2025 | <i class="fas fa-user"></i> By Peter KG',
+                title: "The Future of AI in Business",
+                meta: '<span><i class="fas fa-calendar"></i> September 5, 2025</span><span><i class="fas fa-user"></i> By Peter KG</span>',
                 content: `
                     <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Web Development" class="blog-image">
                     
-                    <p>The web development landscape is constantly evolving. Here are the key trends shaping the industry in 2024:</p>
+                    <p>Artificial Intelligence is revolutionizing the way businesses operate, offering unprecedented opportunities for growth, efficiency, and innovation. In 2024, we're seeing AI move from experimental projects to core business operations.</p>
                     
-                    <h3>Frontend Innovations</h3>
-                    <p>1. <strong>React Server Components:</strong> Blending server-side and client-side rendering for optimal performance.</p>
-                    <p>2. <strong>WebAssembly:</strong> Enabling high-performance applications to run in the browser.</p>
-                    <p>3. <strong>Progressive Web Apps (PWAs):</strong> Delivering app-like experiences through the browser.</p>
+                    <h3>Key Areas of Impact</h3>
+                    <p>1. <strong>Customer Service:</strong> AI-powered chatbots and virtual assistants are providing 24/7 support, reducing response times from hours to seconds.</p>
+                    <p>2. <strong>Data Analysis:</strong> Machine learning algorithms can process vast amounts of data to identify patterns and insights that humans might miss.</p>
+                    <p>3. <strong>Process Automation:</strong> Routine tasks are being automated, freeing up human workers for more strategic activities.</p>
                     
-                    <h3>Backend Advancements</h3>
-                    <p>1. <strong>Serverless Architecture:</strong> Reducing infrastructure management overhead.</p>
-                    <p>2. <strong>Edge Computing:</strong> Processing data closer to users for faster response times.</p>
-                    <p>3. <strong>GraphQL:</strong> Providing flexible and efficient data querying.</p>
+                    <h3>Real-World Examples</h3>
+                    <p>Companies like Amazon and Netflix have been using AI for years to personalize recommendations. Now, smaller businesses are adopting similar technologies to compete effectively.</p>
                     
-                    <p>These trends are making web applications faster, more secure, and more user-friendly than ever before.</p>
+                    <p>The future of AI in business is not about replacing humans, but about augmenting human capabilities and creating new opportunities for innovation and growth.</p>
                 `
             }
         };
@@ -336,4 +455,3 @@
     </script>
 </body>
 </html>
-
