@@ -176,40 +176,39 @@
     background-color: #ddd;
 }
 /* Modal Styles */
-/* ===== Modal Styles ===== */
-
+/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
-    z-index: 10001; /* slightly higher to appear above other elements */
+    z-index: 10001; /* ensures modal is above other elements */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 .modal-content {
-    background-color: #fff;
-    margin: 5% auto;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-    width: 90%;
+    background-color: #ffffff;
+    padding: 30px 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+    width: 100%;
     max-width: 500px;
     position: relative;
-    animation: modalSlideIn 0.3s ease-out;
-}
-.modal.show .modal-content {
-    transform: translateY(0);
-    opacity: 1;
+    animation: modalSlideIn 0.25s ease-out;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 @keyframes modalSlideIn {
     from {
         opacity: 0;
-        transform: translateY(-50px);
+        transform: translateY(-40px);
     }
     to {
         opacity: 1;
@@ -221,11 +220,11 @@
     position: absolute;
     top: 15px;
     right: 20px;
-    font-size: 28px;
+    font-size: 26px;
     font-weight: bold;
-    color: #aaa;
+    color: #999;
     cursor: pointer;
-    transition: color 0.3s;
+    transition: color 0.2s;
 }
 
 .close-modal:hover {
@@ -234,13 +233,12 @@
 
 .modal-content h3 {
     margin-bottom: 20px;
-    color: #1d3557;
+    color: #222;
     text-align: center;
-    font-size: 1.6rem;
-    font-weight: 700;
+    font-size: 22px;
 }
 
-/* ===== Form Styles ===== */
+/* Form Styles */
 #availabilityForm .form-group {
     margin-bottom: 18px;
 }
@@ -249,22 +247,22 @@
     display: block;
     margin-bottom: 6px;
     font-weight: 600;
-    color: #1d3557;
+    color: #222;
 }
 
 #availabilityForm input,
 #availabilityForm textarea {
     width: 100%;
-    padding: 12px 15px;
-    border: 1.5px solid #dcdcdc;
-    border-radius: 8px;
+    padding: 12px 14px;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
     font-size: 15px;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition: border-color 0.25s;
     font-family: inherit;
 }
 
 #availabilityForm textarea {
-    height: 90px;
+    height: 80px;
     resize: vertical;
 }
 
@@ -272,102 +270,71 @@
 #availabilityForm textarea:focus {
     outline: none;
     border-color: #007bff;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
 }
 
 #availabilityForm button {
     width: 100%;
-    padding: 12px 0;
-    background: linear-gradient(135deg, #007bff, #0056b3);
+    padding: 12px;
+    background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 16px;
-    font-weight: 600;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: background 0.3s, transform 0.2s;
 }
 
 #availabilityForm button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    background-color: #0056b3;
+    transform: translateY(-1px);
 }
 
 #availabilityForm button:disabled {
-    background: #ccc;
+    background-color: #ccc;
     cursor: not-allowed;
     transform: none;
-    box-shadow: none;
 }
 
-/* ===== Confirmation / Error Popup ===== */
-.popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10000; /* higher than modal */
-    background: rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(4px);
-}
-
-.custom-popup {
-    background: #fff;
-    padding: 30px 25px;
-    border-radius: 12px;
+/* Confirmation & Error Messages */
+.confirmation-message,
+.error-message {
+    display: none;
     text-align: center;
-    min-width: 320px;
-    max-width: 90%;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.3);
-    animation: popupSlideIn 0.3s ease-out;
+    padding: 20px;
 }
 
-@keyframes popupSlideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.confirmation-message i {
+    font-size: 46px;
+    color: #28a745;
+    margin-bottom: 12px;
 }
 
-.custom-popup h3 {
-    margin-bottom: 15px;
-    font-size: 1.4rem;
-    font-weight: 700;
+.error-message i {
+    font-size: 46px;
+    color: #dc3545;
+    margin-bottom: 12px;
 }
 
-.custom-popup p {
-    margin-bottom: 20px;
+.confirmation-message p,
+.error-message p {
     font-size: 15px;
-    line-height: 1.5;
-    color: #333;
+    color: #222;
+    margin: 0 0 16px 0;
+    line-height: 1.4;
 }
 
-.custom-popup .popup-ok {
-    padding: 10px 20px;
-    font-size: 15px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
+/* Optional: subtle animation for messages */
+.confirmation-message.show,
+.error-message.show {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
 }
 
-.custom-popup .popup-ok:hover {
-    transform: translateY(-2px);
-    opacity: 0.9;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== Smooth UX Improvements ===== */
-body.modal-open {
-    overflow: hidden; /* prevent scrolling when modal is open */
-}
 
 
 
@@ -429,6 +396,7 @@ body.modal-open {
         text-align: center;
     }
 }
+
 
 
 
