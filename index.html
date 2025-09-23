@@ -256,13 +256,13 @@
             </div>
             <div class="contact-content">
                 <div class="contact-form">
-                    <div id="contactSuccess" style="display:none; color: green; margin-bottom: 15px;">
-                    Your message has been sent! We will respond as soon as possible.
-                    </div>
-                    <form id="contactForm" action="https://formsubmit.co/el/ruxasa" method="POST">
+                    <!-- Remove the inline message divs since we're using popups -->
+                    <form id="contactForm" action="https://formsubmit.co/spec.compshac@gmail.com" method="POST">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
-                        <input type="hidden" name="_subject" value="New Contact Form Submission">
+                        <input type="hidden" name="_subject" value="New Contact Form Submission - SPEC COMPUTERS">
+                        <input type="hidden" name="_template" value="table">
+                        
                         <div class="form-group">
                             <input type="text" name="name" id="name" placeholder="Your Name" required>
                         </div>
@@ -285,7 +285,6 @@
                         <button type="submit" class="btn">Send message</button>
                      </form>
                 </div>
-
             </div>
         </div>
     </section>
@@ -332,23 +331,13 @@
     </footer>
 
     <script src="js/script.js"></script>
-      <script>
-         document.addEventListener("keydown", function(e) {
-           if (e.ctrlKey && (e.key === "u" || e.key === "U")) {
-             e.preventDefault();
-             alert("You are not allowed to copy content or view source!");
-           }
-         });
-   </script>     
+    <script>
+        document.addEventListener("keydown", function(e) {
+            if (e.ctrlKey && (e.key === "u" || e.key === "U")) {
+                e.preventDefault();
+                alert("You are not allowed to copy content or view source!");
+            }
+        });
+    </script>     
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
