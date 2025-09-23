@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // ===== Modal Functionality =====
+
+    // ===== Modal Elements =====
     const modal = document.getElementById('buyNowModal');
     const modalClose = modal.querySelector('.close-modal');
     const availabilityForm = document.getElementById('availabilityForm');
@@ -11,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const productCard = this.closest('.product-card');
             const productName = productCard.querySelector('h3').textContent;
-            productNameInput.value = productName; // set hidden product input
+            productNameInput.value = productName; // set hidden input
             modal.style.display = 'flex';
         });
     });
@@ -25,9 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // ===== Form Submission =====
     availabilityForm.addEventListener('submit', async function(e) {
         e.preventDefault();
-
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
+
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending...';
 
@@ -55,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // ===== Custom Popup Function =====
+    // ===== Custom Popup Function (Centered with Icon) =====
     function showCustomPopup(message, type) {
         const overlay = document.createElement('div');
         overlay.className = 'popup-overlay';
@@ -64,52 +65,55 @@ document.addEventListener('DOMContentLoaded', function() {
             top: 0; left: 0;
             width: 100%; height: 100%;
             background: rgba(0,0,0,0.5);
-            z-index: 10000;
+            z-index: 10002;
             display: flex;
             justify-content: center;
             align-items: center;
+            backdrop-filter: blur(5px);
         `;
 
         const popup = document.createElement('div');
         popup.className = `custom-popup popup-${type}`;
         popup.style.cssText = `
-            background: white;
-            padding: 30px;
+            background: #fff;
+            padding: 25px 35px;
             border-radius: 10px;
             box-shadow: 0 5px 30px rgba(0,0,0,0.3);
             text-align: center;
-            min-width: 300px;
-            max-width: 90%;
-            border-left: 5px solid ${type === 'success' ? '#4CAF50' : '#f44336'};
+            max-width: 400px;
+            width: 90%;
+            position: relative;
         `;
 
         const icon = type === 'success' ? '✅' : '❌';
-        const title = type === 'success' ? 'Success!' : 'Error!';
-        
+        const color = type === 'success' ? '#4CAF50' : '#f44336';
         popup.innerHTML = `
-            <h3 style="margin:0 0 15px 0;color:${type==='success'?'#4CAF50':'#f44336'}">${icon} ${title}</h3>
-            <p style="margin:0 0 20px 0;line-height:1.5">${message}</p>
+            <h3 style="margin:0 0 15px 0; font-size: 24px; color: ${color}">${icon} ${type === 'success' ? 'Success!' : 'Error!'}</h3>
+            <p style="margin:0; font-size:16px; line-height:1.5; color:#333">${message}</p>
             <button class="popup-ok" style="
-                background:${type==='success'?'#4CAF50':'#f44336'};
-                color:white;
-                border:none;
+                margin-top:20px;
                 padding:10px 20px;
+                border:none;
                 border-radius:5px;
-                cursor:pointer;
                 font-size:16px;
+                cursor:pointer;
+                color:#fff;
+                background:${color};
             ">OK</button>
         `;
 
         overlay.appendChild(popup);
         document.body.appendChild(overlay);
 
-        const okButton = popup.querySelector('.popup-ok');
-        okButton.addEventListener('click', () => document.body.removeChild(overlay));
+        // Close on OK button
+        const okBtn = popup.querySelector('.popup-ok');
+        okBtn.addEventListener('click', () => document.body.removeChild(overlay));
 
+        // Close on overlay click
         overlay.addEventListener('click', e => { if (e.target === overlay) document.body.removeChild(overlay); });
 
-        const closePopup = e => { if (e.key === 'Escape') { document.body.removeChild(overlay); document.removeEventListener('keydown', closePopup); } };
-        document.addEventListener('keydown', closePopup);
+        // Close on ESC
+        const escClose = e => { if (e.key === 'Escape') { document.body.removeChild(overlay); document.removeEventListener('keydown', escClose); } };
+        document.addEventListener('keydown', escClose);
     }
 });
-
