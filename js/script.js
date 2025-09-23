@@ -133,19 +133,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            console.log('Form submitted:', formData);
-
             const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
 
-            setTimeout(() => {
-                alert('Thank you for your message! We will get back to you soon.');
-                this.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 1500);
         });
     }
 
@@ -192,4 +183,5 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
 
