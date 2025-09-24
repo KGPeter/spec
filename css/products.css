@@ -176,205 +176,82 @@
     background-color: #ddd;
 }
 /* Modal Styles */
-/* ===== Modal Styles ===== */
+
+/* Modal Styles */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 9999; /* lower than popup overlay */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    overflow-y: auto;
-    transition: opacity 0.3s ease;
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
 }
 
 .modal-content {
-    background-color: #fff;
-    width: 100%;
-    max-width: 500px;
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.3);
-    position: relative;
-    animation: modalSlideIn 0.35s ease-out;
-    transform: translateY(-30px);
-    opacity: 0;
-    transition: transform 0.3s, opacity 0.3s;
-}
-
-.modal.show .modal-content {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-@keyframes modalSlideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .close-modal {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 28px;
-    font-weight: bold;
-    color: #aaa;
-    cursor: pointer;
-    transition: color 0.3s;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
 }
 
 .close-modal:hover {
-    color: #333;
+  color: #333;
 }
 
 .modal-content h3 {
-    margin-bottom: 20px;
-    color: #1d3557;
-    text-align: center;
-    font-size: 1.6rem;
-    font-weight: 700;
+  margin-bottom: 20px;
+  color: #2c3e50;
 }
 
-/* ===== Form Styles ===== */
-#availabilityForm .form-group {
-    margin-bottom: 18px;
+.modal-content .form-group {
+  margin-bottom: 20px;
 }
 
-#availabilityForm label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
-    color: #1d3557;
+.modal-content label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
 }
 
-#availabilityForm input,
-#availabilityForm textarea {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1.5px solid #dcdcdc;
-    border-radius: 8px;
-    font-size: 15px;
-    transition: border-color 0.3s, box-shadow 0.3s;
-    font-family: inherit;
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
 }
 
-#availabilityForm textarea {
-    height: 90px;
-    resize: vertical;
+.confirmation-message {
+  display: none;
+  text-align: center;
+  padding: 20px;
 }
 
-#availabilityForm input:focus,
-#availabilityForm textarea:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+.confirmation-message i {
+  font-size: 50px;
+  color: #4CAF50;
+  margin-bottom: 15px;
 }
 
-#availabilityForm button {
-    width: 100%;
-    padding: 12px 0;
-    background: linear-gradient(135deg, #007bff, #0056b3);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.25s ease;
+.confirmation-message p {
+  font-size: 18px;
+  color: #333;
 }
-
-#availabilityForm button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-}
-
-#availabilityForm button:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
-}
-
-/* ===== Confirmation / Error Popup ===== */
-.popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10000; /* higher than modal */
-    background: rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.custom-popup {
-    background: #fff;
-    padding: 30px 25px;
-    border-radius: 12px;
-    text-align: center;
-    min-width: 320px;
-    max-width: 90%;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.3);
-    animation: popupSlideIn 0.3s ease-out;
-}
-
-@keyframes popupSlideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.custom-popup h3 {
-    margin-bottom: 15px;
-    font-size: 1.4rem;
-    font-weight: 700;
-}
-
-.custom-popup p {
-    margin-bottom: 20px;
-    font-size: 15px;
-    line-height: 1.5;
-    color: #333;
-}
-
-.custom-popup .popup-ok {
-    padding: 10px 20px;
-    font-size: 15px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.custom-popup .popup-ok:hover {
-    transform: translateY(-2px);
-    opacity: 0.9;
-}
-
-/* ===== Smooth UX Improvements ===== */
-body.modal-open {
-    overflow: hidden; /* prevent scrolling when modal is open */
-}
-
 
 
 /* Buy Now Button */
@@ -435,6 +312,7 @@ body.modal-open {
         text-align: center;
     }
 }
+
 
 
 
