@@ -1,62 +1,68 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
     // ===== Modal Elements =====
     const modal = document.getElementById('buyNowModal');
-    const modalClose = modal.querySelector('.close-modal');
+    const modalClose = modal ? modal.querySelector('.close-modal') : null;
     const availabilityForm = document.getElementById('availabilityForm');
     const productNameInput = document.getElementById('productName');
 
     // Open modal on "Buy Now" click
     document.querySelectorAll('.buy-now').forEach(btn => {
-        btn.addEventListener('click', function(e) {
+        btn.addEventListener('click', function (e) {
             e.preventDefault();
             const productCard = this.closest('.product-card');
-            const productName = productCard.querySelector('h3').textContent;
-            productNameInput.value = productName; // set hidden input
-            modal.style.display = 'flex';
+            if (productCard && productNameInput) {
+                const productName = productCard.querySelector('h3').textContent;
+                productNameInput.value = productName;
+            }
+            if (modal) modal.style.display = 'flex';
         });
     });
 
     // Close modal
-    modalClose.addEventListener('click', () => modal.style.display = 'none');
+    if (modalClose) {
+        modalClose.addEventListener('click', () => modal.style.display = 'none');
+    }
     window.addEventListener('click', (e) => {
         if (e.target === modal) modal.style.display = 'none';
     });
 
-    // ===== Form Submission =====
-    availabilityForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
+    // ===== Availability Form Submission =====
+    if (availabilityForm) {
+        availabilityForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
 
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
 
-        try {
-            const formData = new FormData(this);
-            const response = await fetch(this.action, {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            });
+            try {
+                const formData = new FormData(this);
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
 
-            if (response.ok) {
-                showCustomPopup('Your message has been sent successfully! We will get back to you soon.', 'success');
-                this.reset();
-                modal.style.display = 'none';
-            } else {
-                throw new Error('Form submission failed');
+                if (response.ok) {
+                    showCustomPopup('Your message has been sent successfully! We will get back to you soon.', 'success');
+                    this.reset();
+                    if (modal) modal.style.display = 'none';
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                showCustomPopup("Couldn't send the message. Please try again.", 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
             }
-        } catch (error) {
-            console.error('Form submission error:', error);
-            showCustomPopup("Couldn't send the message. Please try again.", 'error');
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
-        }
-    });
+        });
+    }
 
-    // ===== Custom Popup Function (Centered with Icon) =====
+    // ===== Custom Popup Function =====
     function showCustomPopup(message, type) {
         const overlay = document.createElement('div');
         overlay.className = 'popup-overlay';
@@ -110,10 +116,66 @@ document.addEventListener('DOMContentLoaded', function() {
         okBtn.addEventListener('click', () => document.body.removeChild(overlay));
 
         // Close on overlay click
-        overlay.addEventListener('click', e => { if (e.target === overlay) document.body.removeChild(overlay); });
+        overlay.addEventListener('click', e => {
+            if (e.target === overlay) document.body.removeChild(overlay);
+        });
 
         // Close on ESC
-        const escClose = e => { if (e.key === 'Escape') { document.body.removeChild(overlay); document.removeEventListener('keydown', escClose); } };
+        const escClose = e => {
+            if (e.key === 'Escape') {
+                document.body.removeChild(overlay);
+                document.removeEventListener('keydown', escClose);
+            }
+        };
         document.addEventListener('keydown', escClose);
     }
+
+    // ===== Smooth Scrolling =====
+    const navbar = document.querySelector('.navbar');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                if (navbar?.classList.contains('active')) {
+                    navbar.classList.remove('active');
+                    if (mobileMenuBtn) {
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // ===== Sticky Header =====
+    const header = document.querySelector('.header');
+    if (header) {
+        window.addEventListener('scroll', function () {
+            header.style.boxShadow = window.scrollY > 100 ?
+                '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none';
+        });
+    }
+
+    // ===== Close mobile menu on link click =====
+    const navLinks = document.querySelectorAll('.navbar ul li a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            if (navbar?.classList.contains('active')) {
+                navbar.classList.remove('active');
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            }
+        });
+    });
+
 });
