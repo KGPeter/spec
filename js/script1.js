@@ -130,9 +130,20 @@ document.addEventListener('DOMContentLoaded', function () {
         document.addEventListener('keydown', escClose);
     }
 
-    // ===== Smooth Scrolling =====
+    // ===== Mobile Menu Toggle =====
     const navbar = document.querySelector('.navbar');
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+
+    if (mobileMenuBtn && navbar) {
+        mobileMenuBtn.addEventListener('click', function () {
+            navbar.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navbar.classList.contains('active')
+                ? '<i class="fas fa-times"></i>'
+                : '<i class="fas fa-bars"></i>';
+        });
+    }
+
+    // ===== Smooth Scrolling =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
