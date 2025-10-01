@@ -281,7 +281,34 @@
     </header>
 
     <div class="blog-content">
-      <!-- Blog Post 1 -->
+      <!-- Blog Post 4 -->
+      <div class="blog-post">
+        <picture>
+          <source 
+            srcset="
+              https://images.unsplash.com/photo-1581092580509-0c88f9a63e67?auto=format&fit=crop&w=457&q=70&fm=webp 1x,
+              https://images.unsplash.com/photo-1581092580509-0c88f9a63e67?auto=format&fit=crop&w=914&q=70&fm=webp 2x" 
+              type="image/webp">
+          <img 
+            src="https://images.unsplash.com/photo-1581092580509-0c88f9a63e67?auto=format&fit=crop&w=457&q=70" 
+            alt="AI Minister Albania" 
+            class="post-image" 
+            width="457" 
+            height="304">
+        </picture>
+        <div class="post-content">
+          <h3>Albania Appoints the World's First AI Minister</h3>
+          <div class="post-meta">
+            <span><i class="fas fa-calendar"></i> October 1, 2025</span>
+            <span><i class="fas fa-user"></i> By Peter KG</span>
+          </div>
+          <p>A new chapter in digital governance has begun – and it might just inspire Africa too...</p>
+          <span class="read-more" data-post="4">Read More <i class="fas fa-arrow-right"></i></span>
+       </div>
+      </div>
+
+      
+      <!-- Blog Post 3 -->
       <div class="blog-post">
         <picture>
           <source 
@@ -335,7 +362,7 @@
         </div>
       </div>
 
-      <!-- Blog Post 3 -->
+      <!-- Blog Post 1 -->
       <div class="blog-post">
         <picture>
           <source 
@@ -384,7 +411,30 @@
 
   <script>
     const blogPosts = {
-      1: {
+      4: {
+          title: "Albania Appoints the World's First AI Minister",
+          meta: '<span><i class="fas fa-calendar"></i> October 1, 2025</span><span><i class="fas fa-user"></i> By Peter KG</span>',
+          content: `
+            <picture>
+              <source srcset="
+                https://images.unsplash.com/photo-1581092580509-0c88f9a63e67?auto=format&fit=crop&w=600&q=70&fm=webp
+              " type="image/webp">
+              <img src="https://images.unsplash.com/photo-1581092580509-0c88f9a63e67?auto=format&fit=crop&w=600&q=70" alt="AI Minister" class="blog-image" width="600" height="300">
+            </picture>
+            <p>History has just been made in Albania. The country has appointed the world’s first <strong>AI Minister</strong> – an artificial intelligence system designed to work alongside humans in shaping national policy. Yes, you read that right: a minister that never sleeps, never forgets, and learns faster than any cabinet member ever could.</p>
+
+            <p>The new AI Minister, named <strong>ADA</strong> (short for “Advanced Digital Advisor”), will advise the government on technology, innovation, and digital transformation. It uses machine learning to analyze data, predict trends, and suggest solutions – from improving public services to fighting climate change.</p>
+
+            <p>While some see this as futuristic and bold, others wonder if it’s too soon. But one thing is certain: Albania just sent a message to the world – the future is no longer coming, <strong>it’s here.</strong></p>
+
+            <p>For us here in Kenya and across Africa, this is more than just global news. It’s a wake-up call. Our continent is bursting with young tech talent, brilliant innovators, and vibrant startups. Imagine what we could achieve if we combined that human creativity with AI’s analytical power – not just in government, but in healthcare, education, and agriculture too.</p>
+
+            <p>Today, it’s Albania. Tomorrow, why not Nairobi or Lagos? The rise of ADA shows that technology isn’t just for Silicon Valley – it’s a tool any nation can use to build a smarter, more inclusive future.</p>
+
+            <p>AI might not replace leaders, but it can <em>supercharge</em> them. And perhaps, the first AI minister in Africa is already being built in a Kenyan garage right now. 🚀</p>
+        `
+       },
+      3: {
         title: "Web Development Trends to Watch",
         meta: '<span><i class="fas fa-calendar"></i> September 25, 2025</span><span><i class="fas fa-user"></i> By Peter KG</span>',
         content: `
@@ -426,7 +476,7 @@
           <p>Remember: Cybersecurity is not a one-time project but an ongoing process that requires constant vigilance and adaptation.</p>
         `
       },
-      3: {
+      1: {
         title: "The Future of AI in Business",
         meta: '<span><i class="fas fa-calendar"></i> September 5, 2025</span><span><i class="fas fa-user"></i> By Peter KG</span>',
         content: `
@@ -491,5 +541,6 @@
     </script>  
 </body>
 </html>
+
 
 
