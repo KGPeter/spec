@@ -19,253 +19,54 @@
       --transition: all 0.3s ease;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: var(--light-color); color: var(--dark-color); line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-    body {
-      background-color: var(--light-color);
-      color: var(--dark-color);
-      line-height: 1.6;
-    }
+    /* Header */
+    .blog-header { position: relative; padding: 100px 20px; text-align: center; color: white; overflow: hidden; margin-bottom: 40px; }
+    .header-background { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(42,78,204,0.7), rgba(26,26,46,0.8)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=70&fm=webp') center/cover no-repeat; z-index: -1; }
+    .blog-header h1 { font-size: 3.5rem; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); }
+    .blog-header p { font-size: 1.5rem; margin-bottom: 30px; text-shadow: 1px 1px 3px rgba(0,0,0,0.7); max-width: 700px; margin-left: auto; margin-right: auto; }
+    .back-button { display: inline-block; padding: 12px 25px; background: var(--primary-color); color: white; text-decoration: none; border-radius: 5px; transition: var(--transition); font-weight: 600; }
+    .back-button:hover { background: #1a3bb3; transform: translateY(-2px); box-shadow: var(--shadow); }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+    /* Grid */
+    .blog-content { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; margin-bottom: 60px; }
+    .blog-post { background: white; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); }
+    .blog-post:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+    .post-image { width: 100%; height: 200px; object-fit: cover; display:block; }
+    .post-content { padding: 25px; }
+    .blog-post h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--secondary-color); }
+    .post-meta { display: flex; align-items: center; margin-bottom: 15px; color: var(--gray-color); font-size: 0.9rem; }
+    .post-meta i { margin-right: 5px; }
+    .post-meta span { margin-right: 15px; }
+    .blog-post p { margin-bottom: 20px; color: var(--gray-color); }
+    .read-more { color: var(--primary-color); text-decoration: none; font-weight: 600; cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; }
+    .read-more:hover { color: #1a3bb3; }
+    .read-more i { margin-left: 5px; transition: var(--transition); }
+    .read-more:hover i { transform: translateX(5px); }
 
-    /* Header with background image */
-    .blog-header {
-      position: relative;
-      padding: 100px 20px;
-      text-align: center;
-      color: white;
-      overflow: hidden;
-      margin-bottom: 40px;
-    }
-
-    .header-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(rgba(42, 78, 204, 0.7), rgba(26, 26, 46, 0.8)), 
-                  url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=70&fm=webp') center/cover no-repeat;
-      z-index: -1;
-    }
-
-    .blog-header h1 {
-      font-size: 3.5rem;
-      margin-bottom: 15px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    }
-
-    .blog-header p {
-      font-size: 1.5rem;
-      margin-bottom: 30px;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .back-button {
-      display: inline-block;
-      padding: 12px 25px;
-      background: var(--primary-color);
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: var(--transition);
-      font-weight: 600;
-    }
-
-    .back-button:hover {
-      background: #1a3bb3;
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
-    }
-
-    /* Blog posts */
-    .blog-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 30px;
-      margin-bottom: 60px;
-    }
-
-    .blog-post {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-    }
-
-    .blog-post:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .post-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .post-content {
-      padding: 25px;
-    }
-
-    .blog-post h3 {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-      color: var(--secondary-color);
-    }
-
-    .post-meta {
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-      color: var(--gray-color);
-      font-size: 0.9rem;
-    }
-
-    .post-meta i {
-      margin-right: 5px;
-    }
-
-    .post-meta span {
-      margin-right: 15px;
-    }
-
-    .blog-post p {
-      margin-bottom: 20px;
-      color: var(--gray-color);
-    }
-
-    .read-more {
-      color: var(--primary-color);
-      text-decoration: none;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-    }
-
-    .read-more:hover {
-      color: #1a3bb3;
-    }
-
-    .read-more i {
-      margin-left: 5px;
-      transition: var(--transition);
-    }
-
-    .read-more:hover i {
-      transform: translateX(5px);
-    }
-
-    /* Modal Styles */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.8);
-      z-index: 1000;
-      overflow-y: auto;
-      padding: 20px;
-    }
-
-    .modal-content {
-      background: white;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 40px;
-      border-radius: 15px;
-      position: relative;
-      animation: modalFadeIn 0.3s ease;
-    }
-
-    @keyframes modalFadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .close-modal {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 2rem;
-      color: var(--gray-color);
-      cursor: pointer;
-      background: none;
-      border: none;
-      transition: var(--transition);
-    }
-
-    .close-modal:hover {
-      color: var(--primary-color);
-    }
-
-    .modal-header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .modal-body {
-      line-height: 1.8;
-    }
-
-    .modal-body p {
-      margin-bottom: 20px;
-      color: var(--gray-color);
-    }
-
-    .blog-image {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin: 20px 0;
-    }
+    /* Modal */
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; overflow-y: auto; padding: 20px; }
+    .modal-content { background: white; max-width: 800px; margin: 40px auto; padding: 40px; border-radius: 15px; position: relative; animation: modalFadeIn 0.25s ease; box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+    @keyframes modalFadeIn { from { opacity: 0; transform: translateY(-12px);} to { opacity: 1; transform: translateY(0);} }
+    .close-modal { position: absolute; top: 12px; right: 16px; font-size: 2rem; color: var(--gray-color); cursor: pointer; background: none; border: none; }
+    .close-modal:hover { color: var(--primary-color); }
+    .modal-header { text-align: center; margin-bottom: 20px; }
+    .modal-body { line-height: 1.8; color: var(--gray-color); }
+    .modal-body p { margin-bottom: 16px; }
+    .blog-image { width: 100%; height: 300px; object-fit: cover; border-radius: 10px; margin: 20px 0; }
 
     /* Footer */
-    .blog-footer {
-      text-align: center;
-      padding: 30px 0;
-      border-top: 1px solid #eaeaea;
-      color: var(--gray-color);
-      font-size: 0.9rem;
-    }
+    .blog-footer { text-align: center; padding: 30px 0; border-top: 1px solid #eaeaea; color: var(--gray-color); font-size: 0.9rem; }
 
-    /* Responsive adjustments */
+    /* Responsive */
     @media (max-width: 768px) {
-      .blog-header h1 {
-        font-size: 2.5rem;
-      }
-      
-      .blog-header p {
-        font-size: 1.2rem;
-      }
-      
-      .blog-content {
-        grid-template-columns: 1fr;
-      }
-      
-      .modal-content {
-        padding: 25px;
-        margin: 20px auto;
-      }
+      .blog-header h1 { font-size: 2.5rem; }
+      .blog-header p { font-size: 1.2rem; }
+      .blog-content { grid-template-columns: 1fr; }
+      .modal-content { padding: 25px; margin: 20px auto; }
     }
   </style>
 </head>
@@ -275,27 +76,15 @@
       <div class="header-background"></div>
       <h1>Digital Bytes</h1>
       <p>Insights, news, and updates from the world of technology</p>
-      <a href="index.html" class="back-button">
-        <i class="fas fa-arrow-left"></i> Back to Home
-      </a>
+      <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
     </header>
 
     <div class="blog-content">
-      <!-- Blog Post 4 -->
+      <!-- Post 1: Latest - AI Minister (placed first) -->
       <div class="blog-post">
         <picture>
-          <source 
-            srcset="
-              https://images.unsplash.com/photo-1581092580509-0c88f9a63e67?auto=format&fit=crop&w=457&q=70&fm=webp 1x,
-              https://images.unsplash.com/photo-1581092580509-0c88f9a63e67?auto=format&fit=crop&w=914&q=70&fm=webp 2x
-            " 
-              type="image/webp">
-          <img 
-            src="https://images.unsplash.com/photo-1581092580509-0c88f9a63e67?auto=format&fit=crop&w=457&q=70" 
-            alt="AI Minister Albania" 
-            class="post-image" 
-            width="457" 
-            height="304">
+          <source srcset="https://images.unsplash.com/photo-1581092580509-0c88f9a63e67?auto=format&fit=crop&w=800&q=70&fm=webp 1x" type="image/webp">
+          <img src="https://images.unsplash.com/photo-1581092580509-0c88f9a63e67?auto=format&fit=crop&w=800&q=70" alt="AI Minister Albania" class="post-image" width="800" height="450">
         </picture>
         <div class="post-content">
           <h3>Albania Appoints the World's First AI Minister</h3>
@@ -303,83 +92,16 @@
             <span><i class="fas fa-calendar"></i> October 1, 2025</span>
             <span><i class="fas fa-user"></i> By Peter KG</span>
           </div>
-          <p>A new chapter in digital governance has begun – and it might just inspire Africa too...</p>
-          <span class="read-more" data-post="4">Read More <i class="fas fa-arrow-right"></i></span>
-       </div>
-      </div>
-
-      
-      <!-- Blog Post 3 -->
-      <div class="blog-post">
-        <picture>
-          <source 
-            srcset="
-              https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=457&q=70&fm=webp 1x,
-              https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=914&q=70&fm=webp 2x
-            " 
-            type="image/webp">
-          <img 
-            src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=457&q=70" 
-            alt="Web Development" 
-            class="post-image" 
-            width="457" 
-            height="304">
-        </picture>
-        <div class="post-content">
-          <h3>The Future of AI in Business</h3>
-          <div class="post-meta">
-            <span><i class="fas fa-calendar"></i> September 5, 2025</span>
-            <span><i class="fas fa-user"></i> By Peter KG</span>
-          </div>
-          <p>Exploring how artificial intelligence is transforming business operations and creating new opportunities...</p>
-          <span class="read-more" data-post="3">Read More <i class="fas fa-arrow-right"></i></span>
-        </div>
-      </div>
-    </div>      
-
-
-      <!-- Blog Post 2 -->
-      <div class="blog-post">
-        <picture>
-          <source 
-            srcset="
-              https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=457&q=70&fm=webp 1x,
-              https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=914&q=70&fm=webp 2x
-            " 
-            type="image/webp">
-          <img 
-            src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=457&q=70" 
-            alt="Cybersecurity" 
-            class="post-image" 
-            width="457" 
-            height="304">
-        </picture>
-        <div class="post-content">
-          <h3>Cybersecurity Best Practices for 2024</h3>
-          <div class="post-meta">
-            <span><i class="fas fa-calendar"></i> September 15, 2025</span>
-            <span><i class="fas fa-user"></i> By Peter KG</span>
-          </div>
-          <p>Essential security measures every business should implement to protect against evolving cyber threats...</p>
-          <span class="read-more" data-post="2">Read More <i class="fas fa-arrow-right"></i></span>
+          <p>A new chapter in digital governance has begun — and it might just inspire Africa too.</p>
+          <span class="read-more" data-post="1">Read More <i class="fas fa-arrow-right"></i></span>
         </div>
       </div>
 
-      <!-- Blog Post 1 -->
+      <!-- Post 2: Web Dev Trends -->
       <div class="blog-post">
         <picture>
-          <source 
-            srcset="
-              https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=457&q=70&fm=webp 1x,
-              https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=914&q=70&fm=webp 2x
-            " 
-            type="image/webp">
-          <img 
-            src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=457&q=70" 
-            alt="AI in Business" 
-            class="post-image" 
-            width="457" 
-            height="305">
+          <source srcset="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=800&q=70&fm=webp 1x" type="image/webp">
+          <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=800&q=70" alt="Web Development Trends" class="post-image" width="800" height="450">
         </picture>
         <div class="post-content">
           <h3>Web Development Trends to Watch</h3>
@@ -387,23 +109,55 @@
             <span><i class="fas fa-calendar"></i> September 25, 2025</span>
             <span><i class="fas fa-user"></i> By Peter KG</span>
           </div>
-          <p>The latest technologies and approaches that are shaping the future of web development...</p>
-          <span class="read-more" data-post="1">Read More <i class="fas fa-arrow-right"></i></span>
+          <p>The latest technologies and approaches that are shaping the future of web development.</p>
+          <span class="read-more" data-post="2">Read More <i class="fas fa-arrow-right"></i></span>
         </div>
-      </div>      
+      </div>
 
+      <!-- Post 3: Cybersecurity -->
+      <div class="blog-post">
+        <picture>
+          <source srcset="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=70&fm=webp 1x" type="image/webp">
+          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800&q=70" alt="Cybersecurity" class="post-image" width="800" height="450">
+        </picture>
+        <div class="post-content">
+          <h3>Cybersecurity Best Practices for 2024</h3>
+          <div class="post-meta">
+            <span><i class="fas fa-calendar"></i> September 15, 2025</span>
+            <span><i class="fas fa-user"></i> By Peter KG</span>
+          </div>
+          <p>Essential security measures every business should implement to protect against evolving cyber threats.</p>
+          <span class="read-more" data-post="3">Read More <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </div>
+
+      <!-- Post 4: AI in Business -->
+      <div class="blog-post">
+        <picture>
+          <source srcset="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=70&fm=webp 1x" type="image/webp">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=70" alt="AI in Business" class="post-image" width="800" height="450">
+        </picture>
+        <div class="post-content">
+          <h3>The Future of AI in Business</h3>
+          <div class="post-meta">
+            <span><i class="fas fa-calendar"></i> September 5, 2025</span>
+            <span><i class="fas fa-user"></i> By Peter KG</span>
+          </div>
+          <p>Exploring how artificial intelligence is transforming business operations and creating new opportunities.</p>
+          <span class="read-more" data-post="4">Read More <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </div>
+    </div>
 
     <!-- Modal -->
-    <div id="blog-modal" class="modal">
-      <div class="modal-content">
-        <button class="close-modal">&times;</button>
+    <div id="blog-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+      <div class="modal-content" role="document">
+        <button class="close-modal" aria-label="Close modal">&times;</button>
         <div class="modal-header">
           <h2 id="modal-title"></h2>
           <div class="post-meta" id="modal-meta"></div>
         </div>
-        <div class="modal-body" id="modal-content">
-          <!-- Content will be inserted by JavaScript -->
-        </div>
+        <div class="modal-body" id="modal-content"></div>
       </div>
     </div>
 
@@ -413,89 +167,73 @@
   </div>
 
   <script>
+    // All posts fully defined (IDs match data-post attributes in DOM)
     const blogPosts = {
-      4: {
-          title: "Albania Appoints the World's First AI Minister",
-          meta: '<span><i class="fas fa-calendar"></i> October 1, 2025</span><span><i class="fas fa-user"></i> By Peter KG</span>',
-          content: `
-            <picture>
-              <source srcset="
-                https://images.unsplash.com/photo-1581092580509-0c88f9a63e67?auto=format&fit=crop&w=600&q=70&fm=webp
-              " type="image/webp">
-              <img src="https://images.unsplash.com/photo-1581092580509-0c88f9a63e67?auto=format&fit=crop&w=600&q=70" alt="AI Minister" class="blog-image" width="600" height="300">
-            </picture>
-            <p>History has just been made in Albania. The country has appointed the world’s first <strong>AI Minister</strong> – an artificial intelligence system designed to work alongside humans in shaping national policy. Yes, you read that right: a minister that never sleeps, never forgets, and learns faster than any cabinet member ever could.</p>
+      1: {
+        title: "Albania Appoints the World's First AI Minister",
+        meta: '<span><i class="fas fa-calendar"></i> October 1, 2025</span><span><i class="fas fa-user"></i> By Peter KG</span>',
+        content: `
+          <picture>
+            <source srcset="https://images.unsplash.com/photo-1581092580509-0c88f9a63e67?auto=format&fit=crop&w=1200&q=70&fm=webp" type="image/webp">
+            <img src="https://images.unsplash.com/photo-1581092580509-0c88f9a63e67?auto=format&fit=crop&w=1200&q=70" alt="AI Minister" class="blog-image">
+          </picture>
+          <p>History has just been made in Albania. The country has appointed the world’s first <strong>AI Minister</strong> — an artificial intelligence system designed to work alongside humans in shaping national policy.</p>
 
-            <p>The new AI Minister, named <strong>ADA</strong> (short for “Advanced Digital Advisor”), will advise the government on technology, innovation, and digital transformation. It uses machine learning to analyze data, predict trends, and suggest solutions – from improving public services to fighting climate change.</p>
+          <p>The new minister, called <strong>ADA</strong> (Advanced Digital Advisor), will advise on technology, innovation, and digital transformation. ADA analyzes data, spots patterns, predicts trends, and suggests solutions — from improving public services to helping tackle climate change.</p>
 
-            <p>While some see this as futuristic and bold, others wonder if it’s too soon. But one thing is certain: Albania just sent a message to the world – the future is no longer coming, <strong>it’s here.</strong></p>
+          <p>Some people find it bold and futuristic. Others worry it's too soon. Either way, Albania sent a clear message: the future is already here.</p>
 
-            <p>For us here in Kenya and across Africa, this is more than just global news. It’s a wake-up call. Our continent is bursting with young tech talent, brilliant innovators, and vibrant startups. Imagine what we could achieve if we combined that human creativity with AI’s analytical power – not just in government, but in healthcare, education, and agriculture too.</p>
+          <p>For Kenya and the rest of Africa, this news is a friendly nudge. Our continent is filled with young tech talent, lively startups, and real-world problems AI can help solve — in farming, health, education, and infrastructure.</p>
 
-            <p>Today, it’s Albania. Tomorrow, why not Nairobi or Lagos? The rise of ADA shows that technology isn’t just for Silicon Valley – it’s a tool any nation can use to build a smarter, more inclusive future.</p>
-
-            <p>AI might not replace leaders, but it can <em>supercharge</em> them. And perhaps, the first AI minister in Africa is already being built in a Kenyan garage right now. 🚀</p>
+          <p>Today it’s Albania. Tomorrow? Maybe Nairobi or Lagos. AI won’t replace leaders — it can <em>supercharge</em> them. Who knows, the next ADA-inspired idea might be coming from a Kenyan garage right now. 🚀</p>
         `
-       },
-      3: {
+      },
+
+      2: {
         title: "Web Development Trends to Watch",
         meta: '<span><i class="fas fa-calendar"></i> September 25, 2025</span><span><i class="fas fa-user"></i> By Peter KG</span>',
         content: `
           <picture>
-            <source srcset="
-              https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=600&q=70&fm=webp
-            " type="image/webp">
-            <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=600&q=70" alt="Web Development" class="blog-image" width="600" height="300">
+            <source srcset="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=1200&q=70&fm=webp" type="image/webp">
+            <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=1200&q=70" alt="Web Development" class="blog-image">
           </picture>
-          <p>The web development landscape is constantly evolving. Here are the key trends shaping the industry in 2025:</p>
-          <h3>Frontend Innovations</h3>
-          <p>1. <strong>React Server Components:</strong> Blending server-side and client-side rendering for optimal performance.</p>
-          <p>2. <strong>WebAssembly:</strong> Enabling high-performance applications to run in the browser.</p>
-          <p>3. <strong>Progressive Web Apps (PWAs):</strong> Delivering app-like experiences through the browser.</p>
-          <h3>Backend Advancements</h3>
-          <p>1. <strong>Serverless Architecture:</strong> Reducing infrastructure management overhead.</p>
-          <p>2. <strong>Edge Computing:</strong> Processing data closer to users for faster response times.</p>
-          <p>3. <strong>GraphQL:</strong> Providing flexible and efficient data querying.</p>
-          <p>These trends are making web applications faster, more secure, and more user-friendly than ever before.</p>
+          <p>The web development landscape keeps changing. In 2025, expect faster sites, smarter UIs, and better offline experiences.</p>
+
+          <p>Key trends: <strong>React Server Components</strong> for performance, <strong>WebAssembly</strong> for heavy apps in the browser, and <strong>PWA</strong> features that feel like native apps.</p>
+
+          <p>Developers in Kenya and across Africa are already using these tools to create lightweight, accessible websites for low-bandwidth users. That matters — performance equals reach.</p>
         `
       },
-      2: {
+
+      3: {
         title: "Cybersecurity Best Practices for 2024",
         meta: '<span><i class="fas fa-calendar"></i> September 15, 2025</span><span><i class="fas fa-user"></i> By Peter KG</span>',
         content: `
           <picture>
-            <source srcset="
-              https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=600&q=70&fm=webp
-            " type="image/webp">
-            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=600&q=70" alt="Cybersecurity" class="blog-image" width="600" height="300">
+            <source srcset="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&q=70&fm=webp" type="image/webp">
+            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&q=70" alt="Cybersecurity" class="blog-image">
           </picture>
-          <p>As cyber threats continue to evolve, businesses must stay ahead of the curve with robust security practices. Here are the essential measures for 2024:</p>
-          <h3>Essential Security Measures</h3>
-          <p>1. <strong>Multi-Factor Authentication (MFA):</strong> Implement MFA across all systems to add an extra layer of security beyond passwords.</p>
-          <p>2. <strong>Regular Security Training:</strong> Educate employees about phishing attacks and social engineering tactics.</p>
-          <p>3. <strong>Zero Trust Architecture:</strong> Assume no user or device is trustworthy until verified.</p>
-          <h3>Emerging Threats</h3>
-          <p>AI-powered attacks are becoming more sophisticated, making traditional security measures less effective. Businesses need to adopt AI-driven security solutions to combat these threats.</p>
-          <p>Remember: Cybersecurity is not a one-time project but an ongoing process that requires constant vigilance and adaptation.</p>
+          <p>Cyber threats are evolving fast. Businesses of all sizes must treat security as a continuous effort, not a one-time setup.</p>
+
+          <p>Essential steps: enable <strong>MFA</strong>, run regular software updates, train staff against phishing, and adopt a <strong>zero-trust</strong> mindset where every access request is verified.</p>
+
+          <p>In Africa, strengthening basic cyber-hygiene can protect growing digital economies and preserve trust between businesses and customers.</p>
         `
       },
-      1: {
+
+      4: {
         title: "The Future of AI in Business",
         meta: '<span><i class="fas fa-calendar"></i> September 5, 2025</span><span><i class="fas fa-user"></i> By Peter KG</span>',
         content: `
           <picture>
-            <source srcset="
-              https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=70&fm=webp
-            " type="image/webp">
-            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=70" alt="AI in Business" class="blog-image" width="600" height="300">
+            <source srcset="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=70&fm=webp" type="image/webp">
+            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=70" alt="AI in Business" class="blog-image">
           </picture>
-          <p>Artificial Intelligence is revolutionizing the way businesses operate, offering unprecedented opportunities for growth, efficiency, and innovation. In 2024, we're seeing AI move from experimental projects to core business operations.</p>
-          <h3>Key Applications of AI</h3>
-          <p>1. <strong>Customer Service:</strong> AI-powered chatbots and virtual assistants are handling more complex queries.</p>
-          <p>2. <strong>Predictive Analytics:</strong> Businesses use AI to forecast trends, customer behavior, and market shifts.</p>
-          <p>3. <strong>Process Automation:</strong> AI automates repetitive tasks, reducing costs and errors.</p>
-          <h3>Future Outlook</h3>
-          <p>The integration of AI with other technologies like IoT and blockchain will create even more powerful business solutions. However, ethical considerations and workforce implications must be carefully managed.</p>
+          <p>AI is moving from experiments to core business tools. From chatbots that handle customers to analytics that predict demand, AI is reshaping how companies operate.</p>
+
+          <p>In Kenya, small teams use AI to recommend crops to farmers, detect fraud in mobile money, and improve patient diagnosis — practical uses that improve lives.</p>
+
+          <p>Ethics and thoughtful rollout matter: use AI to augment people, not replace them, and keep transparency at the center.</p>
         `
       }
     };
@@ -505,47 +243,50 @@
     const modalTitle = document.getElementById('modal-title');
     const modalMeta = document.getElementById('modal-meta');
     const modalContent = document.getElementById('modal-content');
-    const closeModal = document.querySelector('.close-modal');
+    const closeBtn = document.querySelector('.close-modal');
 
-    document.querySelectorAll('.read-more').forEach(link => {
-      link.addEventListener('click', () => {
-        const postId = link.getAttribute('data-post');
-        modalTitle.textContent = blogPosts[postId].title;
-        modalMeta.innerHTML = blogPosts[postId].meta;
-        modalContent.innerHTML = blogPosts[postId].content;
+    // Attach click handlers to read-more buttons
+    document.querySelectorAll('.read-more').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-post');
+        const post = blogPosts[id];
+        if (!post) return;
+        modalTitle.innerHTML = post.title;
+        modalMeta.innerHTML = post.meta;
+        modalContent.innerHTML = post.content;
         modal.style.display = 'block';
+        modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
       });
     });
 
-    closeModal.addEventListener('click', () => {
-      modal.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    });
+    // Close handlers
+    closeBtn.addEventListener('click', closeModal);
+    window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
-    window.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
+    function closeModal() {
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Last updated
+    document.getElementById('last-updated').textContent = document.lastModified;
+
+  </script>
+
+  <!-- Optional external script (keeps your original structure) -->
+  <script src="js/script.js"></script>
+
+  <script>
+    // Prevent Ctrl+U (basic deterrent)
+    document.addEventListener("keydown", function(e) {
+      if (e.ctrlKey && (e.key === "u" || e.key === "U")) {
+        e.preventDefault();
+        alert("You are not allowed to copy content or view source!");
       }
     });
-
-    // Last updated date
-    document.getElementById("last-updated").textContent = document.lastModified;
   </script>
-  <script src="js/script.js"></script>
-    <script>
-        document.addEventListener("keydown", function(e) {
-          if (e.ctrlKey && (e.key === "u" || e.key === "U")) {
-            e.preventDefault();
-            alert("You are not allowed to copy content or view source!");
-           }
-         });
-    </script>  
 </body>
 </html>
-
-
-
-
-
