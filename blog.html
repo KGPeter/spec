@@ -309,14 +309,12 @@
       }
     };
 
-    // Modal functionality
     const modal = document.getElementById('blog-modal');
     const modalTitle = document.getElementById('modal-title');
     const modalMeta = document.getElementById('modal-meta');
     const modalContent = document.getElementById('modal-content');
     const closeBtn = document.querySelector('.close-modal');
 
-    // Attach click handlers to read-more buttons
     document.querySelectorAll('.read-more').forEach(btn => {
       btn.addEventListener('click', () => {
         const id = btn.getAttribute('data-post');
@@ -331,7 +329,6 @@
       });
     });
 
-    // Close handlers
     closeBtn.addEventListener('click', closeModal);
     window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
     window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
@@ -342,16 +339,13 @@
       document.body.style.overflow = 'auto';
     }
 
-    // Last updated
     document.getElementById('last-updated').textContent = document.lastModified;
 
   </script>
 
-  <!-- Optional external script (keeps your original structure) -->
   <script src="js/script.js"></script>
 
   <script>
-    // Prevent Ctrl+U (basic deterrent)
     document.addEventListener("keydown", function(e) {
       if (e.ctrlKey && (e.key === "u" || e.key === "U")) {
         e.preventDefault();
@@ -361,6 +355,7 @@
   </script>
 </body>
 </html>
+
 
 
 
