@@ -1,15 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // ===== Modal Elements =====
     const modal = document.getElementById('serviceModal');
     const inquiryButtons = document.querySelectorAll('.inquire-btn');
     const closeBtn = document.querySelector('.close-modal');
     const form = document.getElementById('serviceInquiryForm');
 
-    // ===== Navbar Elements =====
     const navbar = document.querySelector('.navbar');
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 
-    // ===== Open Modal on Inquire Now =====
     inquiryButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
@@ -22,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
     window.addEventListener('click', e => { if (e.target === modal) closeModal(); });
 
-    // ===== Form Submission with FormSubmit =====
     if (form) {
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -71,7 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = 'auto';
     }
 
-    // ===== Custom Popup =====
     function showCustomPopup(message, type) {
         const overlay = document.createElement('div');
         overlay.className = 'popup-overlay';
@@ -130,7 +125,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ===== Mobile Menu Toggle =====
     if (mobileMenuBtn && navbar) {
         mobileMenuBtn.addEventListener('click', () => {
             navbar.classList.toggle('active');
@@ -140,7 +134,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ===== Close mobile menu on link click =====
     const navLinks = document.querySelectorAll('.navbar ul li a');
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -151,7 +144,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // ===== Sticky Header Shadow =====
     const header = document.querySelector('.header');
     if (header) {
         window.addEventListener('scroll', () => {
@@ -161,3 +153,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
