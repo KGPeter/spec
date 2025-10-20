@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // ===== Mobile Menu Toggle =====
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navbar = document.querySelector('.navbar');
 
@@ -11,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ===== Close mobile menu on link click =====
     const navLinks = document.querySelectorAll('.navbar ul li a');
     navLinks.forEach(link => {
         link.addEventListener('click', function () {
@@ -24,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ===== FAQ Accordion =====
     const faqItems = document.querySelectorAll('.faq-item');
     faqItems.forEach(item => {
         const questionBtn = item.querySelector('.faq-question');
@@ -41,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
             questionBtn.addEventListener('click', () => {
                 const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
 
-                // Close other items
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item) {
                         const otherAnswer = otherItem.querySelector('.faq-answer');
@@ -77,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // ===== Counter Animation =====
     function animateCounters() {
         const counters = document.querySelectorAll('[data-target]');
         if (!counters.length) return;
@@ -116,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     animateCounters();
 
-    // ===== Contact Form =====
+
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', async function (e) {
@@ -129,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 message: this.elements['message'].value.trim()
             };
 
-            // Validation
+
             if (!formData.name || !formData.email || !formData.message || !formData.service) {
                 showCustomPopup('Please fill in all required fields', 'error');
                 return;
@@ -138,15 +133,13 @@ document.addEventListener('DOMContentLoaded', function () {
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             
-            // Show loading state
+
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
 
             try {
-                // Create FormData object for actual submission
                 const submissionData = new FormData(this);
                 
-                // Send to FormSubmit
                 const response = await fetch(this.action, {
                     method: 'POST',
                     body: submissionData,
@@ -156,29 +149,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
 
                 if (response.ok) {
-                    // Success popup
                     showCustomPopup('Your message has been sent successfully! We will get back to you soon.', 'success');
                     this.reset();
                 } else {
-                    // Error from FormSubmit
                     throw new Error('Form submission failed');
                 }
                 
             } catch (error) {
-                // Network error or other issues
                 console.error('Form submission error:', error);
                 showCustomPopup('There was an error sending your message. Please try again.', 'error');
             } finally {
-                // Reset button state
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
             }
         });
     }
 
-    // ===== Custom Popup Function =====
+
     function showCustomPopup(message, type) {
-        // Create overlay
         const overlay = document.createElement('div');
         overlay.className = 'popup-overlay';
         overlay.style.cssText = `
@@ -194,7 +182,6 @@ document.addEventListener('DOMContentLoaded', function () {
             align-items: center;
         `;
         
-        // Create popup
         const popup = document.createElement('div');
         popup.className = `custom-popup popup-${type}`;
         popup.style.cssText = `
@@ -227,24 +214,22 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
         `;
         
-        // Add to DOM
+
         overlay.appendChild(popup);
         document.body.appendChild(overlay);
         
-        // Add event listener to OK button
+
         const okButton = popup.querySelector('.popup-ok');
         okButton.addEventListener('click', function() {
             document.body.removeChild(overlay);
         });
         
-        // Close on overlay click
         overlay.addEventListener('click', function(e) {
             if (e.target === overlay) {
                 document.body.removeChild(overlay);
             }
         });
         
-        // Close on Escape key
         const closePopup = function(e) {
             if (e.key === 'Escape') {
                 document.body.removeChild(overlay);
@@ -254,7 +239,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.addEventListener('keydown', closePopup);
     }
 
-    // ===== Smooth Scrolling =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -278,7 +262,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ===== Sticky Header =====
     const header = document.querySelector('.header');
     if (header) {
         window.addEventListener('scroll', function () {
@@ -287,7 +270,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ===== Accessibility: Keyboard Navigation for FAQ =====
     document.querySelectorAll('.faq-question').forEach(question => {
         question.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
@@ -297,3 +279,4 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
