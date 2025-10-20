@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -13,13 +12,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Last updated date
     const lastUpdated = document.getElementById('last-updated');
     if (lastUpdated) {
         lastUpdated.textContent = new Date().toLocaleDateString();
     }
 
-    // Print functionality
     const printButton = document.getElementById('print-page');
     if (printButton) {
         printButton.addEventListener('click', function() {
@@ -27,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Job application form handling
     const applicationForms = document.querySelectorAll('.application-form');
     applicationForms.forEach(form => {
         form.addEventListener('submit', function(e) {
@@ -37,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Back to top button
     const backToTop = document.createElement('button');
     backToTop.textContent = '↑ Top';
     backToTop.style.cssText = `
@@ -63,4 +58,5 @@ document.addEventListener('DOMContentLoaded', function() {
     backToTop.addEventListener('click', function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
 });
