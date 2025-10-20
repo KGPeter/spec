@@ -1,12 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // ===== Modal Elements =====
     const modal = document.getElementById('buyNowModal');
     const modalClose = modal ? modal.querySelector('.close-modal') : null;
     const availabilityForm = document.getElementById('availabilityForm');
     const productNameInput = document.getElementById('productName');
 
-    // Open modal on "Buy Now" click
     document.querySelectorAll('.buy-now').forEach(btn => {
         btn.addEventListener('click', function (e) {
             e.preventDefault();
@@ -19,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Close modal
     if (modalClose) {
         modalClose.addEventListener('click', () => modal.style.display = 'none');
     }
@@ -27,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.target === modal) modal.style.display = 'none';
     });
 
-    // ===== Availability Form Submission =====
     if (availabilityForm) {
         availabilityForm.addEventListener('submit', async function (e) {
             e.preventDefault();
@@ -62,7 +58,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ===== Custom Popup Function =====
     function showCustomPopup(message, type) {
         const overlay = document.createElement('div');
         overlay.className = 'popup-overlay';
@@ -111,16 +106,13 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.appendChild(popup);
         document.body.appendChild(overlay);
 
-        // Close on OK button
         const okBtn = popup.querySelector('.popup-ok');
         okBtn.addEventListener('click', () => document.body.removeChild(overlay));
 
-        // Close on overlay click
         overlay.addEventListener('click', e => {
             if (e.target === overlay) document.body.removeChild(overlay);
         });
 
-        // Close on ESC
         const escClose = e => {
             if (e.key === 'Escape') {
                 document.body.removeChild(overlay);
@@ -130,7 +122,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.addEventListener('keydown', escClose);
     }
 
-    // ===== Mobile Menu Toggle =====
     const navbar = document.querySelector('.navbar');
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 
@@ -143,7 +134,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ===== Smooth Scrolling =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -167,7 +157,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ===== Sticky Header =====
     const header = document.querySelector('.header');
     if (header) {
         window.addEventListener('scroll', function () {
@@ -176,7 +165,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ===== Close mobile menu on link click =====
     const navLinks = document.querySelectorAll('.navbar ul li a');
     navLinks.forEach(link => {
         link.addEventListener('click', function () {
@@ -190,3 +178,4 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
+
