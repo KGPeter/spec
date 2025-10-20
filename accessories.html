@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/products.css">
     <style>
-        /* Additional styles for category organization */
         .category-section {
             margin-bottom: 3rem;
         }
@@ -47,7 +46,6 @@
             display: none;
         }
         
-        /* Improved filter styles */
         .filter-container {
             display: flex;
             flex-wrap: wrap;
@@ -78,7 +76,6 @@
             background-color: white;
         }
         
-        /* Quick category navigation */
         .category-nav {
             display: flex;
             overflow-x: auto;
@@ -105,7 +102,6 @@
 </head>
 <body>
 
-    <!-- Header/Navigation (same as laptops.html) -->
     <header class="header">
         <div class="container">
             <div class="logo">
@@ -140,7 +136,6 @@
         </div>
     </header>
     
-    <!-- Accessories Hero Section -->
     <section class="products-hero">
         <div class="container">
             <h1>Computer Accessories</h1>
@@ -148,7 +143,6 @@
         </div>
     </section>
 
-    <!-- Quick Category Navigation -->
     <section class="container">
         <div class="category-nav">
             <button class="category-nav-btn active" data-category="all">All Accessories</button>
@@ -159,7 +153,6 @@
         </div>
     </section>
 
-    <!-- Accessories Filter Section -->
     <section class="product-filter">
         <div class="filter-container">
             <div class="filter-group">
@@ -221,7 +214,6 @@
         </div>
     </section>
 
-    <!-- Accessories Grid Section - Organized by Categories -->
     <section class="products-list">
         <div class="container">
             <!-- Cables Category -->
@@ -231,7 +223,6 @@
                     <button class="category-toggle">Collapse</button>
                 </div>
                 <div class="category-content">
-                    <!-- Flower Cables -->
                     <div class="product-card" data-category="cables" data-brand="generic" data-price="300">
                         <div class="product-image">
                             <img src="images/flowercable1.webp" alt="Flower Cables">
@@ -253,7 +244,6 @@
                         </div>
                     </div>
                     
-                    <!-- Power Cables -->
                     <div class="product-card" data-category="cables" data-brand="generic" data-price="900">
                         <div class="product-image">
                             <img src="images/powercable1.webp" alt="Power Cables">
@@ -275,7 +265,6 @@
                         </div>
                     </div>
                     
-                    <!-- Printer Cables -->
                     <div class="product-card" data-category="cables" data-brand="generic" data-price="900">
                         <div class="product-image">
                             <img src="images/printercable.webp" alt="Printer Cables">
@@ -299,7 +288,6 @@
                 </div>
             </div>
             
-            <!-- Mice Category -->
             <div class="category-section" id="mice-category">
                 <div class="category-header">
                     <h2 class="category-title">Mice</h2>
@@ -328,7 +316,6 @@
                         </div>
                     </div>
                     
-                    <!-- Dell Mouse -->
                     <div class="product-card" data-category="mice" data-brand="dell" data-price="300">
                         <div class="product-image">
                             <img src="images/dellmouse.webp" alt="Dell Mouse">
@@ -352,7 +339,6 @@
                 </div>
             </div>
             
-            <!-- Keyboards Category -->
             <div class="category-section" id="keyboards-category">
                 <div class="category-header">
                     <h2 class="category-title">Keyboards</h2>
@@ -535,13 +521,10 @@
         </div>
     </section>
 
-    <!-- Footer (same as laptops.html) -->
     <script src="js/script1.js"></script>
     
     <script>
-        // JavaScript for category organization and filtering
         document.addEventListener('DOMContentLoaded', function() {
-            // Category toggle functionality
             const categoryToggles = document.querySelectorAll('.category-toggle');
             categoryToggles.forEach(toggle => {
                 toggle.addEventListener('click', function() {
@@ -551,34 +534,28 @@
                 });
             });
             
-            // Quick category navigation
             const categoryNavBtns = document.querySelectorAll('.category-nav-btn');
             categoryNavBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
-                    // Update active state
                     categoryNavBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                     
                     const category = this.dataset.category;
                     
                     if (category === 'all') {
-                        // Show all categories
                         document.querySelectorAll('.category-section').forEach(section => {
                             section.style.display = 'block';
                         });
                     } else {
-                        // Hide all categories first
                         document.querySelectorAll('.category-section').forEach(section => {
                             section.style.display = 'none';
                         });
                         
-                        // Show selected category
                         document.getElementById(`${category}-category`).style.display = 'block';
                     }
                 });
             });
             
-            // Filter functionality
             const categoryFilter = document.getElementById('category');
             const brandFilter = document.getElementById('brand');
             const priceFilter = document.getElementById('price-range');
@@ -594,13 +571,10 @@
                     const cardCategory = card.dataset.category;
                     const cardBrand = card.dataset.brand;
                     const cardPrice = parseInt(card.dataset.price);
-                    
-                    // Check if product matches filters
                     const categoryMatch = !categoryValue || cardCategory === categoryValue;
                     const brandMatch = !brandValue || cardBrand === brandValue;
                     const searchMatch = !searchValue || card.querySelector('h3').textContent.toLowerCase().includes(searchValue);
                     
-                    // Check price range match
                     let priceMatch = true;
                     if (priceValue) {
                         const [min, max] = priceValue.split('-').map(Number);
@@ -611,7 +585,6 @@
                         }
                     }
                     
-                    // Show or hide based on filters
                     if (categoryMatch && brandMatch && priceMatch && searchMatch) {
                         card.style.display = 'block';
                     } else {
@@ -620,7 +593,6 @@
                 });
             }
             
-            // Add event listeners to filters
             categoryFilter.addEventListener('change', filterProducts);
             brandFilter.addEventListener('change', filterProducts);
             priceFilter.addEventListener('change', filterProducts);
@@ -636,8 +608,6 @@
          });
     </script>
 
-<!-- Buy Now Popup Modal -->
-    <!-- Buy Now Modal -->
     <div id="buyNowModal" class="modal" style="display:none;">
          <div class="modal-content">
               <span class="close-modal">&times;</span>
@@ -712,6 +682,7 @@ availabilityForm.addEventListener('submit', async function(e) {
 </body>
 
 </html>
+
 
 
 
